@@ -1,0 +1,39 @@
+name: Deploy Go Present Presentation
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch
+    paths:
+      - '**.slide'  # Trigger only if slide files are changed
+  workflow_dispatch:  # Allows manual triggering of the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Go environment
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'  # Specify your Go version
+
+      - name: Install Go Present tool
+        run: go install golang.org/x/tools/cmd/present@latest
+
+      - name: Generate presentation
+        run: |
+          present &
+          sleep 5
+          curl http://localhost:3999 > presentation.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          destination_dir: presentation
+
