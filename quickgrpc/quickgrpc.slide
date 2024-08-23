@@ -1,20 +1,33 @@
-# Title of Talk
+# Quick gRPC
 
-My Name
-9 Mar 2020
-me@example.com
+Ashu Pednekar 
+9 Mar 2020  
+ashupednekar49@gmail.com
 
-## Title of Slide or Section
+## Welcome to Quick gRPC
 
-Some Text about this
+Ready to ditch WSGI and join the microservices party? Let’s gRPC and roll!
 
+## Why WSGI When You Can gRPC?
 
-## Title of Slide or Section
+WSGI is great for traditional web apps, but when it comes to microservices, it can be a bit of a slowpoke. Let’s talk about why gRPC is like WSGI’s turbocharged cousin.
 
-Some Text
+## Protobuf & gRPC: Dynamic Duo
 
+Think of Protobuf as the superhero’s suit and gRPC as the sidekick. Together, they make sure your services are dressed for success.
 
-## Title of Slide or Section
+## QuickgRPC: The WSGI of Your Worries
 
-Some Text
+Introducing QuickgRPC: A framework that makes gRPC as easy as WSGI but with superpowers. Let’s see how it’s done—no cape required.
 
+## Hands-On: Let’s Build a Microservice!
+
+Enough talk, let’s code! We’ll build a microservice faster than you can say “HTTP/2.”
+
+## Best Practices: Avoiding RPC Nightmares
+
+gRPC is powerful, but with great power comes great responsibility. Let’s avoid some common pitfalls and keep your microservices nightmare-free.
+
+## Questions? Let’s Debug Together!
+
+Got questions or need a bit of troubleshooting? Let’s dive into it together—no stack trace too scary!
