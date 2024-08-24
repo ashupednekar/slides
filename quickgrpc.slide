@@ -1,0 +1,51 @@
+# Quick gRPC
+
+Ashu Pednekar 
+9 Mar 2020  
+ashupednekar49@gmail.com
+
+## Welcome to Quick gRPC
+
+Ready to ditch WSGI and join the microservices party? Let’s gRPC and roll!
+
+.image one.jpg 500 1000
+
+## But REST api's are great... Why bother?
+
+<br><br>
+
+.html two.html
+
+## Are they though? 🫤
+
+<br><br>
+
+.html three.html
+
+## And then there's WSGI
+<br><br>
+
+WSGI/ASGI: Where Python speed goes to die.
+
+Gunicorn: Because who doesn’t love configuring worker counts for every full moon?
+
+Async in ASGI? Sure, if you enjoy threading needles with spaghetti.
+
+Scaling? Just keep throwing Gunicorn workers at it and pray.
+
+Deployment is a breeze... said no one ever.
+
+## So what exactly is gRPC
+
+<br>
+gRPC is like a supercharged intercom system for your microservices. 🚀
+<br><br>
+
+- **Protocol:** Think of HTTP/2 as the speedy highway for your data, zipping it around efficiently.
+- **Serialization:** Protocol Buffers (protobuf) are like a universal translator, helping different services speak the same language.
+- **Language Support:** Supports multiple languages, so you can have a polyglot party and everyone gets along!
+- **Streaming:** Handles requests and responses like a pro, even when they’re long-winded or chatty.
+
+## Protobuf
+
+.html protobuf.html
