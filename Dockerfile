@@ -1,6 +1,6 @@
 
 # Use the official Go image from the Docker Hub
-FROM golang:1.20
+FROM golang
 
 # Set the working directory
 WORKDIR /app
