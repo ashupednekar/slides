@@ -8,26 +8,44 @@ ashupednekar49@gmail.com
 
 Ready to ditch WSGI and join the microservices party? Let’s gRPC and roll!
 
-## Why WSGI When You Can gRPC?
+.image one.jpg 500 1000
 
-WSGI is great for traditional web apps, but when it comes to microservices, it can be a bit of a slowpoke. Let’s talk about why gRPC is like WSGI’s turbocharged cousin.
+## But REST api's are great... Why bother?
 
-## Protobuf & gRPC: Dynamic Duo
+<br><br>
 
-Think of Protobuf as the superhero’s suit and gRPC as the sidekick. Together, they make sure your services are dressed for success.
+.html two.html
 
-## QuickgRPC: The WSGI of Your Worries
+## Are they though? 🫤
 
-Introducing QuickgRPC: A framework that makes gRPC as easy as WSGI but with superpowers. Let’s see how it’s done—no cape required.
+<br><br>
 
-## Hands-On: Let’s Build a Microservice!
+.html three.html
 
-Enough talk, let’s code! We’ll build a microservice faster than you can say “HTTP/2.”
+## And then there's WSGI
+<br><br>
 
-## Best Practices: Avoiding RPC Nightmares
+WSGI/ASGI: Where Python speed goes to die.
 
-gRPC is powerful, but with great power comes great responsibility. Let’s avoid some common pitfalls and keep your microservices nightmare-free.
+Gunicorn: Because who doesn’t love configuring worker counts for every full moon?
 
-## Questions? Let’s Debug Together!
+Async in ASGI? Sure, if you enjoy threading needles with spaghetti.
 
-Got questions or need a bit of troubleshooting? Let’s dive into it together—no stack trace too scary!
+Scaling? Just keep throwing Gunicorn workers at it and pray.
+
+Deployment is a breeze... said no one ever.
+
+## So what exactly is gRPC
+
+<br>
+gRPC is like a supercharged intercom system for your microservices. 🚀
+<br><br>
+
+- **Protocol:** Think of HTTP/2 as the speedy highway for your data, zipping it around efficiently.
+- **Serialization:** Protocol Buffers (protobuf) are like a universal translator, helping different services speak the same language.
+- **Language Support:** Supports multiple languages, so you can have a polyglot party and everyone gets along!
+- **Streaming:** Handles requests and responses like a pro, even when they’re long-winded or chatty.
+
+## Protobuf
+
+.html protobuf.html
