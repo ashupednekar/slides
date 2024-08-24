@@ -1,5 +1,5 @@
 
-FROM golang:1.19.0-alpine as build-env
+FROM golang:1.22.0-alpine as build-env
 
 RUN mkdir /app
 WORKDIR /app
@@ -11,4 +11,4 @@ COPY . /app
 
 USER 10014
 
-ENTRYPOINT ["present"]
+ENTRYPOINT ["present", "-http", ":3999"]
