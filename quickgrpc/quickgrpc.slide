@@ -105,4 +105,26 @@ Here's a link to the docs
 .image qrcode_ashupednekar.github.io.png 200 200
 .link https://ashupednekar.github.io/quickgrpc/Getting%20Started/
 
-## Demo time
+*Demo time 😄*
+
+## writing protobuf and generating boilerplate 
+
+.video demo1.mov video/mp4 580 1000
+
+## So far...
+
+We wrote out proto file, with rpc's and their corresponding mmessages
+
+Used the `create_grpc_service` command to generate the boilerplate code we'll need
+
+Looked at proto file validations passed through from protoc
+
+<br>
+
+**Few considerations**
+
+The quickgrpc library currently makes a few assumptions
+- proto file name same as the service name, with the latter being in Title case
+- single service in proto file
+
+These things can change, if there's enough interest... maybe a rust rewrite ;)
