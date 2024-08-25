@@ -127,4 +127,4 @@ The quickgrpc library currently makes a few assumptions
 - proto file name same as the service name, with the latter being in Title case
 - single service in proto file
 
-These things can change, if there's enough interest... maybe a rust rewrite ;)
+These things can change, if there's enough interest... maybe a go/rust rewrite/language support 
