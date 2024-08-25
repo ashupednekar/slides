@@ -25,7 +25,7 @@ Ready to ditch WSGI and join the microservices party? Let’s gRPC and roll!
 ## And then there's WSGI
 <br><br>
 
-WSGI/ASGI: Where Python speed goes to die.
+WSGI/ASGI: Where Python speed goes for a toss.
 
 Gunicorn: Because who doesn’t love configuring worker counts for every full moon?
 
@@ -49,3 +49,27 @@ gRPC is like a supercharged intercom system for your microservices. 🚀
 ## Protobuf
 
 .html protobuf.html
+
+## Let's build one
+
+We'll build a simple crud service 
+
+Let's define the protobud in a `.proto` file
+
+We start a proto file by specifying the syntax version, like so
+
+.code crud0.proto
+
+Here's a link to the protobuf definition
+
+.image qrcode_protobuf.dev.png 200 200
+.link https://protobuf.dev
+
+## Let's start with the messages
+
+.code crud1.proto
+
+## Now let's define the services
+
+.code crud2.proto
+

@@ -1,0 +1,7 @@
+service Employee{
+  rpc create(EmployeeInp) return (Employee);
+  rpc list() return (Employees)
+  rpc retrieve(EmployeeID) return (Employee);
+  rpc update(EmployeeID) return (Employee);
+  rpc delete(EmployeeID) return (Employee)
+}
