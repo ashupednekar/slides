@@ -70,6 +70,39 @@ Here's a link to the protobuf definition
 .code crud1.proto
 
 ## Now let's define the services
+<br>
 
 .code crud2.proto
 
+<br><br>
+The service handles creating, listing, retrieving, updating, and deleting employee records.
+<br><br>
+Handles everything from adding a new hire to giving them the boot, with input as EmployeeInp and output as Employee—because even computers need paperwork.
+
+## What next?
+
+This is how it works
+
+When working with protoc, think of it as the translator who turns your .proto files into code that your project can actually speak to. 
+
+`protoc --<language>_out=<output_directory> <file>.proto` does the trick, generating all the gRPC wrapper code you’ll need. 
+
+
+Here's a link to the docs 
+
+.image qrcode_grpc.io.py.png 200 200
+.link https://grpc.io/docs/languages/python/
+
+
+## So what's quickgRPC ?
+
+It's a simple tool that makes this process much nicer, where you just give it your proto and it spits out boilerplate server and client skeletal code
+
+Another thing it does is put the protoc generated code in `site packages` so that you don't have to ship it along with your server code.
+
+Here's a link to the docs 
+
+.image qrcode_ashupednekar.github.io.png 200 200
+.link https://ashupednekar.github.io/quickgrpc/Getting%20Started/
+
+## Demo time
