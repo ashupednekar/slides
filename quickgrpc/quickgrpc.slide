@@ -139,7 +139,7 @@ These things can change, if there's enough interest... maybe a go/rust rewrite/l
 
 ## Let's write the rpc business logic
 
-
+.video rpclogic.mov video/mp4 580 1000
 
 ## Now let's update the tests
 
