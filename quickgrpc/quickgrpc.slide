@@ -107,9 +107,17 @@ Here's a link to the docs
 
 *Demo time 😄*
 
-## writing protobuf and generating boilerplate 
+## Let's start defining our service with rpc's 
 
-.video demo1.mov video/mp4 580 1000
+.video demorpc.mov video/mp4 580 1000
+
+## Now, we need to define these messages
+
+.video demomessages.mov video/mp4 580 1000
+
+## QuickGrpc in Action
+
+.video demogen.mov video/mp4 580 1000
 
 ## So far...
 
@@ -127,4 +135,17 @@ The quickgrpc library currently makes a few assumptions
 - proto file name same as the service name, with the latter being in Title case
 - single service in proto file
 
-These things can change, if there's enough interest... maybe a go/rust rewrite/language support 
+These things can change, if there's enough interest... maybe a go/rust rewrite/language support
+
+## Let's write the rpc business logic
+
+.video demorpclogic.mov video/mp4 580 1000
+
+
+## Now let's update the tests
+
+.video demorpclogic.mov video/mp4 580 1000
+
+## Voila
+
+.video deburesult.mov video/mp4 580 1000
