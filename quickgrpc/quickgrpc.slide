@@ -112,17 +112,7 @@ Here's a link to the docs
 .image qrcode_ashupednekar.github.io.png 150 150
 .link https://ashupednekar.github.io/quickgrpc/Getting%20Started/
 
-*Demo time 😄*
-
-## Let's start defining our service with rpc's 
-
-.video demorpc.mov video/mp4 580 1000
-
-## Now, we need to define these messages
-
-.video demomessages.mov video/mp4 580 1000
-
-## QuickGrpc in Action
+## Demo time 😄
 
 .video demogen.mov video/mp4 580 1000
 
