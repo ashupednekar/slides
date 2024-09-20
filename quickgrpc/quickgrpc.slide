@@ -29,18 +29,6 @@ Ready to jump ship WSGI and join the microservices party? Let’s gRPC and roll!
 
 .html three.html
 
-## And then there's WSGI
-<br><br>
-
-WSGI/ASGI: Where Python speed goes for a toss.
-
-Gunicorn: Because who doesn’t love configuring worker counts for every full moon?
-
-Async in ASGI? Sure, if you enjoy threading needles with spaghetti.
-
-Scaling? Just keep throwing Gunicorn workers at it and pray.
-
-Deployment is a breeze... said no one ever.
 
 ## So what exactly is gRPC
 
@@ -72,11 +60,7 @@ Here's a link to the protobuf definition
 .image qrcode_protobuf.dev.png 200 200
 .link https://protobuf.dev
 
-## Let's start with the messages
-
-.code crud1.proto
-
-## Now let's define the services
+## Let's first start with the services
 <br>
 
 .code crud2.proto
@@ -85,6 +69,20 @@ Here's a link to the protobuf definition
 The service handles creating, listing, retrieving, updating, and deleting employee records.
 <br><br>
 Handles everything from adding a new hire to giving them the boot, with input as EmployeeInp and output as Employee—because even computers need paperwork.
+
+## Now let's define the messages 
+
+.code crud1a.proto
+
+## Create and retieve/update will need seperate messages
+
+.code crud1b.proto
+
+
+## Finally, the list message
+
+.code crud1c.proto
+
 
 ## What next?
 
@@ -107,9 +105,11 @@ It's a simple tool that makes this process much nicer, where you just give it yo
 
 Another thing it does is put the protoc generated code in `site packages` so that you don't have to ship it along with your server code.
 
-Here's a link to the docs 
+*Note: This is a simple tool I wrote a few years ago. Suggestions/improvements welcome as PRs!*
+<hr>
+Here's a link to the docs
 
-.image qrcode_ashupednekar.github.io.png 200 200
+.image qrcode_ashupednekar.github.io.png 150 150
 .link https://ashupednekar.github.io/quickgrpc/Getting%20Started/
 
 *Demo time 😄*
