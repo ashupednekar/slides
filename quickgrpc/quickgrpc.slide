@@ -179,6 +179,7 @@ Note: none of these are best practices for business logic, just an illustration
 As you saw, there were a few bugs in our service
 - the employee_inp was being passed an id in the unittest. We changed the service to use dict length plus one instead
 - the list extend call was not being made on `.employees` which is the repeated message as per our protobuf.
+- We can also do client, server side or two way byte streaming by chaning proto and making our tests/server functions async
 
 <br>
 That's it! 😁
