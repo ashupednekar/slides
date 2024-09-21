@@ -2,15 +2,15 @@ syntax = "proto3";
 
 message Empty{}
 
-message EmployeeInp{
-  string name = 1;
-  uint32 dept_id = 2;
-  string designation = 3;
-}
-
 message Employee{
   uint32 id = 1;
-  string name = 4;
+  string name = 2;
+  uint32 dept_id = 3;
+  string designation = 4;
+}
+
+message EmployeeInp{
+  string name = 1;
   uint32 dept_id = 2;
   string designation = 3;
 }
@@ -27,6 +27,5 @@ service Employeemgmt{
   rpc create(EmployeeInp) returns (Employee);
   rpc list(Empty) returns (Employees);
   rpc retrieve(EmployeeID) returns (Employee);
-  rpc update(EmployeeInp) returns (Employee);
   rpc delete(EmployeeID) returns (Empty);
 }
