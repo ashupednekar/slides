@@ -1,35 +1,94 @@
-# Litefunctions
-
-Ashu Pednekar
-03/26
+# LiteFunctions
 
 
+What - building lambda from first principles
+Why  - cuz we can 😉
 
-ashupednekar49@gmail.com
 
-https://github.com/ashupednekar
 
-https://www.linkedin.com/in/ashutosh-pednekar-434b52103/
+## Hello 👋🏻
 
-## Welcome to Quick gRPC
+<br><br>
+<br><br>
+I'm Ashu
+<br><br>
+I do go/rust stuff for infra, building for the craft #trad coder
 
-Ready to jump ship WSGI and join the microservices party? Let’s gRPC and roll!
+<br><br>
+Day job:  Sr. software - compute infra @ Rippling
 
-.image one.jpg 400 900
+## What's litefunctions
 
-https://ashutalks.us-cdp2.choreoapps.dev/quickgrpc/quickgrpc.slide#1
+Kubernetes-native platform for sync + async workloads. No vendor lock-in, no language lock-in.
 
+## Let's see it in action
+
+Live demo of the runtime console and operational flow.
+
+## How does it work
+
+Control plane in your cluster. Source-of-truth in your repo. Runtime choices open.
+
+## Lambda Architecture
+
+Traditional serverless: client → gateway → functions. One size fits all. Restricted by platform.
+
+## LiteFunctions Architecture
+
+Client → Ingestor → Operator → Runtimes. Control plane in-cluster. Git-driven updates.
+
+## VCS Integration
+
+Push to repo triggers webhook. Ingestor notifies Operator. Runtime refreshes from VCS. No rebuilds.
+
+## Scenarios - Static vs Dynamic
+
+Static: Go/Rust. Compiled, containerized, rebuild required. Dynamic: Python/TS/Lua. Git pull, no rebuild.
+
+## Scenarios - Sync vs Async
+
+Sync: HTTP. Immediate response. Request/response pattern. Async: NATS pub/sub. Event-driven. Background processing.
+
+## Where does go come in
+
+Go powers the operator, ingestor, and runtime. The engine room of the platform.
+
+## The Goth Stack
+
+Go + Templ + HTMX. Minimal dependencies. Fast iteration. Production ready.
+
+## Kubernetes Operator
+
+Manages Function CRDs. Reconciles deployments. Keeps runtimes alive. Kubebuilder + Cobra.
+
+## Ingestor
+
+Routes HTTP requests. Publishes to NATS. Handles sync + async. Entry point for all traffic.
+
+## Runtimes
+
+Go, Rust, Python, TS, Lua. Multi-language execution. Dynamic refresh for non-static langs.
+
+## SQLc
+
+Type-safe SQL queries in Go. Generated code, no runtime overhead.
+
+## WebAuthn
+
+Passwordless authentication. Hardware security keys. FIDO2/WebAuthn standard.
+
+## What needs to change
+
+Traditional FaaS: vendor lock-in, language lock-in, rebuild cycles. LiteFunctions: own your control plane.
 
 ## Summary
 
-As you saw, there were a few bugs in our service
-- the employee_inp was being passed an id in the unittest. We changed the service to use dict length plus one instead
-- the list extend call was not being made on `.employees` which is the repeated message as per our protobuf.
-- We can also do client, server side or two way byte streaming by chaning proto and making our tests/server functions async
+Full control. Multi-language. Git-driven. Kubernetes-native. No vendor lock-in.
 
-<br>
+## Links
+- GitHub: https://github.com/ashupednekar/litefunctions
+- Documentation: https://ashupednekar.github.io/litefunctions/
+
 That's it! 😁
-<br><br>
-<hr><br>
 
-note: gRPC is not a silver bullet, it's meant for service to service communication alongside pubsub, most browsers don't support it directly
+note: LiteFunctions is designed for Kubernetes environments and provides a self-hosted alternative to managed FaaS platforms
