@@ -22,9 +22,27 @@ Why  - building from first principles — cuz we can 😉
 
 .html selfhosted.html
 
-## Let's see it in action
+## So what's infra, in the most generic sense
 
-Live demo of the runtime console and operational flow.
+<br>
+
+.html infra.html
+
+## Let's log in to see what it's got
+
+.html demo-login.html
+
+## Let's write an API
+
+.html demo-writeapi.html
+
+## There you go
+
+.html demo-there.html
+
+## How about some websockets
+
+.html demo-websockets.html
 
 ## How does it work
 
