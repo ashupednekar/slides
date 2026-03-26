@@ -1,25 +1,26 @@
 # LiteFunctions
 
 
-What - building lambda from first principles
-Why  - cuz we can 😉
+What - serverless on your cluster: Lambda-shaped, without the vendor
+Why  - building from first principles — cuz we can 😉
 
 
 
 ## Hello 👋🏻
 
-<br><br>
-<br><br>
-I'm Ashu
-<br><br>
-I do go/rust stuff for infra, building for the craft #trad coder
+.html hello.html
+
+## buzzword - Serverless
 
 <br><br>
-Day job:  Sr. software - compute infra @ Rippling
 
-## What's litefunctions
+.html serverless.html
 
-Kubernetes-native platform for sync + async workloads. No vendor lock-in, no language lock-in.
+## So we want self hosted lambda
+
+<br>
+
+.html selfhosted.html
 
 ## Let's see it in action
 
@@ -27,15 +28,21 @@ Live demo of the runtime console and operational flow.
 
 ## How does it work
 
-Control plane in your cluster. Source-of-truth in your repo. Runtime choices open.
+You get the serverless **feel** — deploy a function, hit an endpoint, wire async — without shipping your brain to a SaaS console.
+
+Control plane lives in **your** cluster. Truth lives in **your** repo. Runtimes are **your** choice.
 
 ## Lambda Architecture
 
-Traditional serverless: client → gateway → functions. One size fits all. Restricted by platform.
+Cloud serverless: client → managed gateway → black-box functions. Great until you need the knobs they won’t give you.
+
+One platform’s opinions: languages, limits, cold starts, bill surprises.
 
 ## LiteFunctions Architecture
 
-Client → Ingestor → Operator → Runtimes. Control plane in-cluster. Git-driven updates.
+Your client → Ingestor → Operator → Runtimes. Same rough shape as “functions behind a front door,” but **you** see every hop.
+
+Git tells the system what to run; the cluster runs it. No mystery layer you can’t inspect.
 
 ## VCS Integration
 
@@ -79,16 +86,21 @@ Passwordless authentication. Hardware security keys. FIDO2/WebAuthn standard.
 
 ## What needs to change
 
-Traditional FaaS: vendor lock-in, language lock-in, rebuild cycles. LiteFunctions: own your control plane.
+Managed serverless trades convenience for **their** defaults. LiteFunctions trades a little DIY for **your** defaults.
+
+Own the control plane. Own the languages. Own the deploy story.
 
 ## Summary
 
-Full control. Multi-language. Git-driven. Kubernetes-native. No vendor lock-in.
+Serverless **you** run: multi-language, sync + async, Git-driven, Kubernetes-native.
+
+Not “no servers” — **your** servers, **your** rules. Full control, no vendor lock-in.
 
 ## Links
-- GitHub: https://github.com/ashupednekar/litefunctions
-- Documentation: https://ashupednekar.github.io/litefunctions/
+- Code: https://github.com/ashupednekar/litefunctions
+- Docs & site: https://ashupednekar.github.io/litefunctions/
+- Blog — let’s build our own lambda FaaS: https://ashupednekar.github.io/posts/lets-build-our-own-lambda-faas/
 
 That's it! 😁
 
-note: LiteFunctions is designed for Kubernetes environments and provides a self-hosted alternative to managed FaaS platforms
+note: LiteFunctions is Kubernetes-native serverless — self-hosted FaaS when you want Lambda-shaped ergonomics without handing someone else the keys
