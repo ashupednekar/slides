@@ -46,9 +46,7 @@ Why  - building from first principles — cuz we can 😉
 
 ## How does it work
 
-You get the serverless **feel** — deploy a function, hit an endpoint, wire async — without shipping your brain to a SaaS console.
-
-Control plane lives in **your** cluster. Truth lives in **your** repo. Runtimes are **your** choice.
+.html how-does-it-work.html
 
 ## Lambda Architecture
 
