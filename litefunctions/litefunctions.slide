@@ -44,25 +44,15 @@ Why  - building from first principles — cuz we can 😉
 
 .html demo-websockets.html
 
-## How does it work
+## What does lambda look like
+.html lambda-diagram.html
+
+## Let’s understand what needs to happen
 
 .html how-does-it-work.html
 
-## Lambda Architecture
-
-Cloud serverless: client → managed gateway → black-box functions. Great until you need the knobs they won’t give you.
-
-One platform’s opinions: languages, limits, cold starts, bill surprises.
-
-## LiteFunctions Architecture
-
-Your client → Ingestor → Operator → Runtimes. Same rough shape as “functions behind a front door,” but **you** see every hop.
-
-Git tells the system what to run; the cluster runs it. No mystery layer you can’t inspect.
-
-## VCS Integration
-
-Push to repo triggers webhook. Ingestor notifies Operator. Runtime refreshes from VCS. No rebuilds.
+## Here's ours
+.html heres-ours.html
 
 ## Scenarios - Static vs Dynamic
 
@@ -74,15 +64,11 @@ Sync: HTTP. Immediate response. Request/response pattern. Async: NATS pub/sub. E
 
 ## Where does go come in
 
-Go powers the operator, ingestor, and runtime. The engine room of the platform.
+.html where-does-go-come-in.html
 
-## The Goth Stack
+## LiteFunctions Operator
 
-Go + Templ + HTMX. Minimal dependencies. Fast iteration. Production ready.
-
-## Kubernetes Operator
-
-Manages Function CRDs. Reconciles deployments. Keeps runtimes alive. Kubebuilder + Cobra.
+.html kubernetes-operator.html
 
 ## Ingestor
 
@@ -91,14 +77,6 @@ Routes HTTP requests. Publishes to NATS. Handles sync + async. Entry point for a
 ## Runtimes
 
 Go, Rust, Python, TS, Lua. Multi-language execution. Dynamic refresh for non-static langs.
-
-## SQLc
-
-Type-safe SQL queries in Go. Generated code, no runtime overhead.
-
-## WebAuthn
-
-Passwordless authentication. Hardware security keys. FIDO2/WebAuthn standard.
 
 ## What needs to change
 
