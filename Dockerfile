@@ -1,14 +1,10 @@
-
-FROM golang:1.22.0-alpine as build-env
-
-RUN mkdir /app
-WORKDIR /app
-RUN addgroup -g 10014 choreo && \
-    adduser --disabled-password --no-create-home --uid 10014 --ingroup choreo choreouser
+FROM golang:1.22-alpine AS build
+ENV CGO_ENABLED=0
 RUN go install golang.org/x/tools/cmd/present@latest
 
-COPY . /app
-
-USER 10014
-
-ENTRYPOINT ["present", "-http", ":3999"]
+FROM scratch
+COPY --from=build /go/bin/present /present
+WORKDIR /app
+COPY . .
+EXPOSE 3999
+ENTRYPOINT ["/present", "-http", ":3999"]
