@@ -1,4 +1,5 @@
-FROM golang:1.22-alpine AS build
+# present@latest tracks x/tools, which currently needs Go >= 1.25
+FROM golang:1.25-alpine AS build
 ENV CGO_ENABLED=0
 RUN go install golang.org/x/tools/cmd/present@latest
 
