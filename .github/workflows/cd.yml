@@ -31,7 +31,7 @@ jobs:
       - name: Deploy on server
         uses: appleboy/ssh-action@v1.2.5
         with:
-          host: 65.2.132.53
+          host: ${{ vars.SSH_HOST }}
           username: ubuntu
           key: ${{ secrets.ashupednekar }}
           script: |
