@@ -1,20 +1,24 @@
-<div style="display: flex; flex-direction: column; gap: 1.1rem; width: 100%; box-sizing: border-box; padding-top: 0.1rem;">
-  <div style="font-size: clamp(1.1rem, 2vw, 1.28rem); line-height: 1.52; max-width: min(46em, 96%); opacity: 0.96;">
+<div style="display: flex; flex-direction: column; gap: 0.85rem; width: 100%; box-sizing: border-box; padding-top: 0.1rem; padding-bottom: 0.35rem;">
+  <div style="font-size: clamp(1.1rem, 2vw, 1.28rem); line-height: 1.52; max-width: min(46em, 96%); opacity: 0.96; margin-bottom: 0.15rem;">
     The pieces you care about are <strong>ingestor</strong>, <strong>operator</strong>, <strong>streams</strong>, and <strong>Kubernetes</strong> itself — and they’re all written in Go, Well… everywhere.
   </div>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; align-content: center; gap: 0; width: 100%; min-height: min(68vh, 640px); box-sizing: border-box; padding: 0.5rem 1rem;">
-    <div style="display: inline-flex; flex-direction: row; align-items: center; gap: clamp(0.35rem, 1.2vw, 0.75rem); transform: rotate(-10deg); margin: clamp(-0.25rem, -0.8vw, 0); position: relative; z-index: 6;">
-      <img src="images/go.png" alt="" title="Go" style="height: clamp(160px, 26vw, 260px); width: auto; object-fit: contain; display: block;" />
-      <img src="images/gin.png" alt="" title="Gin" style="height: clamp(140px, 23vw, 230px); width: auto; max-width: min(160px, 28vw); object-fit: contain; display: block;" />
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(0.65rem, 1.8vw, 1rem); width: 100%; box-sizing: border-box; padding: 0.35rem 0.25rem 0;">
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; align-content: center; gap: clamp(0.55rem, 1.6vw, 1.05rem); width: 100%; max-width: min(52rem, 100%);">
+      <div style="display: inline-flex; flex-direction: row; align-items: center; gap: clamp(0.35rem, 1.2vw, 0.75rem); transform: rotate(-10deg); position: relative; z-index: 6;">
+        <img src="images/go.png" alt="" title="Go" style="height: clamp(120px, 20vw, 200px); width: auto; object-fit: contain; display: block;" />
+        <img src="images/gin.png" alt="" title="Gin" style="height: clamp(105px, 17vw, 175px); width: auto; max-width: min(150px, 26vw); object-fit: contain; display: block;" />
+      </div>
+      <img src="images/kubebuilder.png" alt="" title="Kubebuilder" style="height: clamp(88px, 14vw, 130px); width: auto; max-width: min(240px, 48vw); object-fit: contain; transform: rotate(7deg); position: relative; z-index: 2; display: block;" />
+      <img src="images/nats.png" alt="" title="NATS" style="height: clamp(82px, 13vw, 122px); width: auto; object-fit: contain; transform: rotate(4deg); position: relative; z-index: 5; display: block;" />
+      <img src="images/gitea.svg" alt="" title="Gitea" style="height: clamp(78px, 12vw, 115px); width: auto; max-width: min(180px, 38vw); object-fit: contain; transform: rotate(-8deg); position: relative; z-index: 4; display: block;" />
     </div>
-    <img src="images/kubebuilder.png" alt="" title="Kubebuilder" style="height: clamp(100px, 16vw, 150px); width: auto; max-width: min(280px, 52vw); object-fit: contain; transform: rotate(7deg); margin: clamp(-0.5rem, -1.2vw, -0.2rem); position: relative; z-index: 2; display: block;" />
-    <img src="images/nats.png" alt="" title="NATS" style="height: clamp(92px, 15vw, 140px); width: auto; object-fit: contain; transform: rotate(4deg); margin: clamp(-0.45rem, -1.1vw, -0.2rem); position: relative; z-index: 5; display: block;" />
-    <img src="images/gitea.svg" alt="" title="Gitea" style="height: clamp(88px, 14vw, 130px); width: auto; max-width: min(200px, 40vw); object-fit: contain; transform: rotate(-8deg); margin: clamp(-0.5rem, -1.1vw, -0.2rem); position: relative; z-index: 4; display: block;" />
-    <img src="images/k8s.png" alt="" title="Kubernetes" style="height: clamp(100px, 16vw, 148px); width: auto; object-fit: contain; transform: rotate(-5deg); margin: clamp(-0.4rem, -1vw, -0.15rem); position: relative; z-index: 3; display: block;" />
-    <img src="images/helm.svg" alt="" title="Helm" style="height: clamp(100px, 16vw, 148px); width: auto; max-width: min(220px, 42vw); object-fit: contain; transform: rotate(7deg); margin: clamp(-0.5rem, -1.2vw, -0.2rem); position: relative; z-index: 2; display: block;" />
-    <img src="images/templ.png" alt="" title="Templ" style="height: clamp(72px, 11vw, 108px); width: auto; max-width: min(320px, 75vw); object-fit: contain; object-position: left center; transform: rotate(5deg); margin: clamp(-0.35rem, -0.9vw, -0.15rem); position: relative; z-index: 3; display: block;" />
-    <img src="images/sqlc.png" alt="" title="sqlc" style="height: clamp(68px, 10.5vw, 100px); width: auto; max-width: min(300px, 72vw); object-fit: contain; object-position: left center; transform: rotate(-4deg); margin: clamp(-0.35rem, -0.9vw, -0.15rem); position: relative; z-index: 2; display: block;" />
-    <img src="images/crunchydata.png" alt="" title="Crunchy Data" style="height: clamp(80px, 12.5vw, 118px); width: auto; max-width: min(220px, 44vw); object-fit: contain; transform: rotate(6deg); margin: clamp(-0.4rem, -1vw, -0.18rem); position: relative; z-index: 3; display: block;" />
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; align-content: center; gap: clamp(0.55rem, 1.6vw, 1.05rem); width: 100%; max-width: min(52rem, 100%);">
+      <img src="images/k8s.png" alt="" title="Kubernetes" style="height: clamp(100px, 16vw, 148px); width: auto; object-fit: contain; transform: rotate(-5deg); position: relative; z-index: 3; display: block;" />
+      <img src="images/helm.svg" alt="" title="Helm" style="height: clamp(100px, 16vw, 148px); width: auto; max-width: min(220px, 42vw); object-fit: contain; transform: rotate(7deg); position: relative; z-index: 2; display: block;" />
+      <img src="images/templ.png" alt="" title="Templ" style="height: clamp(72px, 11vw, 108px); width: auto; max-width: min(300px, 72vw); object-fit: contain; object-position: left center; transform: rotate(5deg); position: relative; z-index: 3; display: block;" />
+      <img src="images/sqlc.png" alt="" title="sqlc" style="height: clamp(68px, 10.5vw, 100px); width: auto; max-width: min(280px, 70vw); object-fit: contain; object-position: left center; transform: rotate(-4deg); position: relative; z-index: 2; display: block;" />
+      <img src="images/crunchydata.png" alt="" title="Crunchy Data" style="height: clamp(80px, 12.5vw, 118px); width: auto; max-width: min(220px, 44vw); object-fit: contain; transform: rotate(6deg); position: relative; z-index: 3; display: block;" />
+    </div>
   </div>
 </div>

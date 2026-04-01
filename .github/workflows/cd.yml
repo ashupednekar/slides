@@ -36,4 +36,5 @@ jobs:
           key: ${{ secrets.ashupednekar }}
           script: |
             docker pull ashupednekar535/slides:latest
-            docker restart slides
+            docker rm -f slides
+            docker run -p 3999:3999 -d --name slides --restart always ashupednekar535/slides

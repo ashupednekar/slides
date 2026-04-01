@@ -51,7 +51,7 @@ Why  - building from first principles — cuz we can 😉
 
 .html how-does-it-work.html
 
-## Here's ours
+## Components
 .html heres-ours.html
 
 ## Scenarios - Static vs Dynamic
@@ -70,19 +70,9 @@ Sync: HTTP. Immediate response. Request/response pattern. Async: NATS pub/sub. E
 
 .html kubernetes-operator.html
 
-## Ingestor
+## Lots to improve
 
-Routes HTTP requests. Publishes to NATS. Handles sync + async. Entry point for all traffic.
 
-## Runtimes
-
-Go, Rust, Python, TS, Lua. Multi-language execution. Dynamic refresh for non-static langs.
-
-## What needs to change
-
-Managed serverless trades convenience for **their** defaults. LiteFunctions trades a little DIY for **your** defaults.
-
-Own the control plane. Own the languages. Own the deploy story.
 
 ## Summary
 
