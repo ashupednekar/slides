@@ -1,4 +1,4 @@
-name: Build and push slides image
+name: CD
 
 on:
   push:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  docker:
+  cd:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
