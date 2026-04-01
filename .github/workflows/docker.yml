@@ -27,3 +27,13 @@ jobs:
           tags: |
             ashupednekar535/slides:latest
             ashupednekar535/slides:${{ github.sha }}
+
+      - name: Deploy on server
+        uses: appleboy/ssh-action@v1.2.5
+        with:
+          host: 65.2.132.53
+          username: ubuntu
+          key: ${{ secrets.ashupednekar }}
+          script: |
+            docker pull ashupednekar535/slides:latest
+            docker restart slides
