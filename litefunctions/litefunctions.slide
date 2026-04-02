@@ -54,17 +54,17 @@ Why  - building from first principles — cuz we can 😉
 ## Components
 .html heres-ours.html
 
-## Scenarios - Static vs Dynamic
-
-Static: Go/Rust. Compiled, containerized, rebuild required. Dynamic: Python/TS/Lua. Git pull, no rebuild.
-
-## Scenarios - Sync vs Async
-
-Sync: HTTP. Immediate response. Request/response pattern. Async: NATS pub/sub. Event-driven. Background processing.
-
 ## Where does go come in
 
 .html where-does-go-come-in.html
+
+## Let's dig in
+
+.html dataflow.html
+
+## The runtimes
+
+.html runtimes.html
 
 ## LiteFunctions Operator
 
@@ -72,6 +72,7 @@ Sync: HTTP. Immediate response. Request/response pattern. Async: NATS pub/sub. E
 
 ## Lots to improve
 
+So,
 
 
 ## Summary

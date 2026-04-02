@@ -1,0 +1,33 @@
+<div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding: clamp(0.85rem, 2.5vh, 1.55rem) 0.35rem 0.65rem;">
+  <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1rem, 2.5vw, 1.65rem); width: 100%; box-sizing: border-box;">
+    <div style="flex: 1 1 300px; max-width: 100%; border-radius: 12px; border: 1px solid #3a3a40; background: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(255,255,255,0.06) 0%, transparent 58%), #121214; padding: 0.55rem 0.5rem; box-sizing: border-box; display: flex; align-items: center; justify-content: center; min-height: min(34vh, 280px);">
+      <img src="images/runtimes.png" alt="Function runtime: dynamic vs binary" style="display: block; width: 100%; height: auto; max-height: min(44vh, 420px); object-fit: contain; object-position: center center;" />
+    </div>
+    <div style="flex: 1.2 1 320px; min-width: min(100%, 280px); display: flex; flex-direction: column; gap: 0.95rem; justify-content: center;">
+      <div style="padding: 0.65rem 0.75rem 0.7rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(165deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset;">
+        <div style="display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.7rem; padding-bottom: 0.45rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-weight: 700; font-size: clamp(0.72rem, 1.2vw, 0.82rem); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9;">Static langs</div>
+          <img src="images/go.png" alt="" style="height: clamp(34px, 5.2vw, 46px); width: auto; max-width: min(100px, 22vw); object-fit: contain; flex-shrink: 0; transform: rotate(9deg) translateY(3px); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));" />
+        </div>
+        <ul style="margin: 0.15rem 0 0 0; padding-left: 1.2rem; font-size: clamp(0.86rem, 1.45vw, 0.98rem); line-height: 1.62; opacity: 0.93;">
+          <li style="margin-bottom: 0.42rem;">Compile to <strong>binaries</strong></li>
+          <li style="margin-bottom: 0.42rem;"><strong>Low startup</strong> time</li>
+          <li style="margin-bottom: 0.42rem;"><strong>Low memory</strong> usage</li>
+          <li style="margin-bottom: 0;">→ <strong>One runtime per function</strong></li>
+        </ul>
+      </div>
+      <div style="padding: 0.65rem 0.75rem 0.65rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(165deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.025) 100%); box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset;">
+        <div style="display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.7rem; padding-bottom: 0.45rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div style="font-weight: 700; font-size: clamp(0.72rem, 1.2vw, 0.82rem); letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.9;">Dynamic languages</div>
+          <img src="images/pythonloho.png" alt="" style="height: clamp(32px, 4.8vw, 44px); width: auto; max-width: min(90px, 20vw); object-fit: contain; flex-shrink: 0; transform: rotate(-7deg) translateY(2px); filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));" />
+        </div>
+        <ul style="margin: 0.15rem 0 0 0; padding-left: 1.2rem; font-size: clamp(0.86rem, 1.45vw, 0.98rem); line-height: 1.62; opacity: 0.93;">
+          <li style="margin-bottom: 0.42rem;"><strong>High memory</strong> usage</li>
+          <li style="margin-bottom: 0.42rem;"><strong>Slow startup</strong></li>
+          <li style="margin-bottom: 0.42rem;">→ <strong>One runtime per project</strong> (not one per function)</li>
+          <li style="margin-bottom: 0;"><strong>Hot reload</strong> — the one amazing superpower dynamic languages have, so we load the function code into a preexisting project runtime (p.s. dll's/wasm could work 😉)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
