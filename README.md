@@ -19,11 +19,11 @@ Install `present` (Go 1.25+ recommended; matches the Docker image):
 go install golang.org/x/tools/cmd/present@latest
 ```
 
-From the repo root, open a deck directory and start the server:
+From the repo root, open a deck directory and start the server. Use the bundled templates so the default **Thank you** closing slide is omitted (upstream `present` always appends it):
 
 ```bash
 cd litefunctions   # or quickgrpc
-present
+present -base=../present-assets
 ```
 
 Browse to the URL printed in the terminal (typically `http://127.0.0.1:3999`).

@@ -8,4 +8,5 @@ COPY --from=build /go/bin/present /present
 WORKDIR /app
 COPY . .
 EXPOSE 3999
-ENTRYPOINT ["/present", "-http", ":3999"]
+# Custom templates in present-assets/ (slides.tmpl has no closing "Thank you" slide — see present-assets/templates/slides.tmpl)
+ENTRYPOINT ["/present", "-http", ":3999", "-base=/app/present-assets"]

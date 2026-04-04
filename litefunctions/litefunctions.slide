@@ -72,20 +72,8 @@ Why  - building from first principles — cuz we can 😉
 
 ## Lots to improve
 
-So,
+.html lots-to-improve.html
 
+## Than:q
 
-## Summary
-
-Serverless **you** run: multi-language, sync + async, Git-driven, Kubernetes-native.
-
-Not “no servers” — **your** servers, **your** rules. Full control, no vendor lock-in.
-
-## Links
-- Code: https://github.com/ashupednekar/litefunctions
-- Docs & site: https://ashupednekar.github.io/litefunctions/
-- Blog — let’s build our own lambda FaaS: https://ashupednekar.github.io/posts/lets-build-our-own-lambda-faas/
-
-That's it! 😁
-
-note: LiteFunctions is Kubernetes-native serverless — self-hosted FaaS when you want Lambda-shaped ergonomics without handing someone else the keys
+.html thank-you.html
