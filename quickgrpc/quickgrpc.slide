@@ -209,3 +209,7 @@ That's it! 😁
 <hr><br>
 
 note: gRPC is not a silver bullet, it's meant for service to service communication alongside pubsub, most browsers don't support it directly
+
+## Than:q
+
+.html ../thank-you.html

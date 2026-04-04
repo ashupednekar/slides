@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Generate social QR PNGs for thank-you slide. Requires: pip install qrcode[pil]"""
+"""Generate social QR PNGs for thank-you slide (repo root thank-you.html). Requires: pip install qrcode[pil]"""
 
 from pathlib import Path
 
 import qrcode
 from qrcode.constants import ERROR_CORRECT_M
 
-# Same URLs as <a href> in thank-you.html (must stay in sync)
+# Same URLs as <a href> in ../../thank-you.html (must stay in sync)
 URLS: dict[str, str] = {
     "linkedinqr.png": "https://www.linkedin.com/in/ashupednekar",
     "xqr.png": "https://x.com/ashupednekar49",
