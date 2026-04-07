@@ -58,17 +58,29 @@ Why  - building from first principles — cuz we can 😉
 
 .html where-does-go-come-in.html
 
-## Let's dig in
+## Let's dig in, ingestor
 
 .html dataflow.html
+
+## $ litefunctions/ingestor
+
+.html code-ingestor.html
 
 ## The runtimes
 
 .html runtimes.html
 
+## $ litefunctions/runtimes
+
+.html code-runtimes.html
+
 ## LiteFunctions Operator
 
 .html kubernetes-operator.html
+
+## Operator — in the code
+
+.html code-operator.html
 
 ## Lots to improve
 

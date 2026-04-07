@@ -1,0 +1,211 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/operator/" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit;">
+    <div style="position: relative; width: min(92px, 16vw); max-width: 92px;">
+      <img src="images/operator_qr.png" alt="QR: operator on GitHub" style="width: 100%; height: auto; display: block; border-radius: 6px; box-sizing: border-box;" />
+      <img src="images/github.png" alt="" width="560" height="560" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 22%; height: auto; max-width: 22px; object-fit: contain; background: #fff; border-radius: 6px; padding: 3px; box-sizing: border-box; box-shadow: 0 0 0 1px rgba(255,255,255,0.06);" />
+    </div>
+  </a>
+  <div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box;">
+    <div style="min-width: 0; display: flex; flex-direction: column; gap: 0.4rem;">
+      <a href="https://github.com/ashupednekar/litefunctions/blob/main/operator/internal/controller/function_controller.go" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">
+        <div style="font-size: clamp(0.68rem, 1.05vw, 0.78rem); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75;">internal/controller/function_controller.go</div>
+      </a>
+      <pre style="margin: 0; padding: 0.5rem 0.55rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.52rem, 0.85vw, 0.65rem); line-height: 1.36; text-align: left; white-space: pre; overflow: auto; max-height: min(72vh, 620px); background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">/*
+Copyright 2025.
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http:
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+// +kubebuilder:rbac:groups=apps.ashupednekar.github.io,resources=functions,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=&quot;&quot;,resources=services,verbs=get;list;watch;create;update;patch;delete
+package controller
+
+import (
+	&quot;context&quot;
+	&quot;time&quot;
+
+	&quot;k8s.io/apimachinery/pkg/runtime&quot;
+	&quot;k8s.io/apimachinery/pkg/types&quot;
+	ctrl &quot;sigs.k8s.io/controller-runtime&quot;
+	&quot;sigs.k8s.io/controller-runtime/pkg/client&quot;
+	&quot;sigs.k8s.io/controller-runtime/pkg/controller/controllerutil&quot;
+	logf &quot;sigs.k8s.io/controller-runtime/pkg/log&quot;
+
+	apiv1 &quot;github.com/ashupednekar/litefunctions/operator/api/v1&quot;
+	appsv1 &quot;k8s.io/api/apps/v1&quot;
+	corev1 &quot;k8s.io/api/core/v1&quot;
+	apierrs &quot;k8s.io/apimachinery/pkg/api/errors&quot;
+)
+
+type FunctionReconciler struct {
+	client.Client
+	Scheme *runtime.Scheme
+}
+
+func (r *FunctionReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+	log := logf.FromContext(ctx)
+
+	var function apiv1.Function
+	if err := r.Get(ctx, req.NamespacedName, &amp;function); err != nil {
+		return ctrl.Result{}, client.IgnoreNotFound(err)
+	}
+
+	deploymentName := GetDeploymentName(&amp;function)
+	serviceName := GetServiceName(&amp;function)
+
+	if !function.Spec.IsActive {
+		sharedInUse, err := r.hasOtherActiveFunctionUsingSharedRuntime(ctx, &amp;function)
+		if err != nil {
+			log.Error(err, &quot;Failed to check shared runtime usage&quot;, &quot;deployment&quot;, deploymentName)
+			return ctrl.Result{}, err
+		}
+		if sharedInUse {
+			log.Info(&quot;Skipping shared runtime cleanup; another active function still uses it&quot;, &quot;deployment&quot;, deploymentName)
+			return ctrl.Result{}, nil
+		}
+
+		var existing appsv1.Deployment
+		err = r.Get(ctx, types.NamespacedName{Name: deploymentName, Namespace: function.Namespace}, &amp;existing)
+
+		if err == nil {
+			if err := r.Delete(ctx, &amp;existing); err != nil {
+				log.Error(err, &quot;Failed to delete deployment&quot;, &quot;deployment&quot;, deploymentName)
+				return ctrl.Result{}, err
+			}
+			log.Info(&quot;Deleted deployment for inactive function&quot;, &quot;deployment&quot;, deploymentName)
+		} else if !apierrs.IsNotFound(err) {
+			log.Error(err, &quot;Failed to get deployment&quot;, &quot;deployment&quot;, deploymentName)
+			return ctrl.Result{}, err
+		}
+
+		var existingSvc corev1.Service
+		svcErr := r.Get(ctx, types.NamespacedName{Name: serviceName, Namespace: function.Namespace}, &amp;existingSvc)
+		if svcErr == nil {
+			if err := r.Delete(ctx, &amp;existingSvc); err != nil {
+				log.Error(err, &quot;Failed to delete service&quot;, &quot;service&quot;, serviceName)
+				return ctrl.Result{}, err
+			}
+			log.Info(&quot;Deleted service for inactive function&quot;, &quot;service&quot;, serviceName)
+		} else if !apierrs.IsNotFound(svcErr) {
+			log.Error(svcErr, &quot;Failed to get service&quot;, &quot;service&quot;, serviceName)
+			return ctrl.Result{}, svcErr
+		}
+
+		return ctrl.Result{}, nil
+	}
+
+	deploy := NewDeployment(&amp;function)
+	svc := NewService(&amp;function)
+
+	if !isDynamicLanguage(function.Spec.Language) {
+		if err := controllerutil.SetControllerReference(&amp;function, deploy, r.Scheme); err != nil {
+			log.Error(err, &quot;Failed to set controller reference&quot;)
+			return ctrl.Result{}, err
+		}
+		if err := controllerutil.SetControllerReference(&amp;function, svc, r.Scheme); err != nil {
+			log.Error(err, &quot;Failed to set controller reference for service&quot;)
+			return ctrl.Result{}, err
+		}
+	}
+
+	var existing appsv1.Deployment
+	err := r.Get(ctx, types.NamespacedName{Name: deploymentName, Namespace: function.Namespace}, &amp;existing)
+
+	if err != nil &amp;&amp; apierrs.IsNotFound(err) {
+		if err := r.Create(ctx, deploy); err != nil {
+			log.Error(err, &quot;Failed to create deployment&quot;, &quot;deployment&quot;, deploymentName)
+			return ctrl.Result{}, err
+		}
+		log.Info(&quot;Created new deployment for function&quot;, &quot;deployment&quot;, deploymentName)
+	} else if err == nil {
+		deploy.ResourceVersion = existing.ResourceVersion
+		if err := r.Update(ctx, deploy); err != nil {
+			log.Error(err, &quot;Failed to update deployment&quot;, &quot;deployment&quot;, deploymentName)
+			return ctrl.Result{}, err
+		}
+		log.Info(&quot;Updated existing deployment for function&quot;, &quot;deployment&quot;, deploymentName)
+	} else {
+		log.Error(err, &quot;Failed to get deployment&quot;, &quot;deployment&quot;, deploymentName)
+		return ctrl.Result{}, err
+	}
+
+	var existingSvc corev1.Service
+	svcErr := r.Get(ctx, types.NamespacedName{Name: serviceName, Namespace: function.Namespace}, &amp;existingSvc)
+	if svcErr != nil &amp;&amp; apierrs.IsNotFound(svcErr) {
+		if err := r.Create(ctx, svc); err != nil {
+			log.Error(err, &quot;Failed to create service&quot;, &quot;service&quot;, serviceName)
+			return ctrl.Result{}, err
+		}
+		log.Info(&quot;Created new service for function&quot;, &quot;service&quot;, serviceName)
+	} else if svcErr == nil {
+		svc.ResourceVersion = existingSvc.ResourceVersion
+		svc.Spec.ClusterIP = existingSvc.Spec.ClusterIP
+		svc.Spec.ClusterIPs = existingSvc.Spec.ClusterIPs
+		if err := r.Update(ctx, svc); err != nil {
+			log.Error(err, &quot;Failed to update service&quot;, &quot;service&quot;, serviceName)
+			return ctrl.Result{}, err
+		}
+		log.Info(&quot;Updated existing service for function&quot;, &quot;service&quot;, serviceName)
+	} else {
+		log.Error(svcErr, &quot;Failed to get service&quot;, &quot;service&quot;, serviceName)
+		return ctrl.Result{}, svcErr
+	}
+
+	now := time.Now()
+	deprovisionTime := now.Add(Cfg.KeepWarmDuration)
+	function.Spec.DeProvisionTime = deprovisionTime.Format(time.RFC3339)
+
+	if err := r.Update(ctx, &amp;function); err != nil {
+		log.Error(err, &quot;Failed to update function deprovision time&quot;)
+		return ctrl.Result{}, err
+	}
+
+	return ctrl.Result{}, nil
+}
+
+func (r *FunctionReconciler) hasOtherActiveFunctionUsingSharedRuntime(ctx context.Context, function *apiv1.Function) (bool, error) {
+	if !isDynamicLanguage(function.Spec.Language) {
+		return false, nil
+	}
+
+	var functions apiv1.FunctionList
+	if err := r.List(ctx, &amp;functions, client.InNamespace(function.Namespace)); err != nil {
+		return false, err
+	}
+
+	for i := range functions.Items {
+		fn := &amp;functions.Items[i]
+		if fn.Name == function.Name {
+			continue
+		}
+		if fn.Spec.Language != function.Spec.Language || fn.Spec.Project != function.Spec.Project {
+			continue
+		}
+		if fn.Spec.IsActive {
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
+
+func (r *FunctionReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	return ctrl.NewControllerManagedBy(mgr).
+		For(&amp;apiv1.Function{}).
+		Named(&quot;function&quot;).
+		Complete(r)
+}
+</pre>
+    </div>
+  </div>
+</div>

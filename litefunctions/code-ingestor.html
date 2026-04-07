@@ -1,0 +1,139 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/ingestor/pkg/broker/request.go" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit;">
+    <div style="position: relative; width: min(92px, 16vw); max-width: 92px;">
+      <img src="images/broker_request_qr.png" alt="QR: request.go on GitHub" style="width: 100%; height: auto; display: block; border-radius: 6px; box-sizing: border-box;" />
+      <img src="images/github.png" alt="" width="560" height="560" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 22%; height: auto; max-width: 22px; object-fit: contain; background: #fff; border-radius: 6px; padding: 3px; box-sizing: border-box; box-shadow: 0 0 0 1px rgba(255,255,255,0.06);" />
+    </div>
+  </a>
+  <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(0.65rem, 1.5vw, 1rem); align-items: start; width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box;">
+  <div style="min-width: 0; display: flex; flex-direction: column; gap: 0.4rem;">
+    <div style="font-size: clamp(0.68rem, 1.05vw, 0.78rem); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75;">request.go — Submit · Produce</div>
+    <pre style="margin: 0; padding: 0.5rem 0.55rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.58rem, 0.95vw, 0.72rem); line-height: 1.38; text-align: left; white-space: pre; overflow: auto; max-height: min(72vh, 620px); background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">package broker
+
+import (
+	&quot;fmt&quot;
+	&quot;io&quot;
+	&quot;math/rand&quot;
+	&quot;net/http&quot;
+
+	&quot;github.com/gorilla/websocket&quot;
+	&quot;github.com/nats-io/nats.go&quot;
+)
+
+type Req struct {
+	Project string
+	Name    string
+	Lang    string
+	ReqId   string
+}
+
+const letterBytes = &quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;
+
+func Submit(nc *nats.Conn, r *http.Request, lang string) (*Req, error) {
+	project, name := parsePath(r.URL.Path)
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
+		return nil, fmt.Errorf(&quot;error reading request body: %s&quot;, err)
+	}
+	reqID := randString(8)
+	if err := nc.Publish(
+		fmt.Sprintf(&quot;%s.%s.exec.%s.%s&quot;, project, name, lang, reqID),
+		body,
+	); err != nil {
+		return nil, fmt.Errorf(&quot;error submitting request: %v&quot;, err)
+	}
+	return &amp;Req{Project: project, Name: name, Lang: lang, ReqId: reqID}, nil
+}
+
+func Produce(nc *nats.Conn, w http.ResponseWriter, r *http.Request, lang string) (*websocket.Conn, *Req, error) {
+	project, name := parsePath(r.URL.Path)
+	reqID := randString(8)
+	req := Req{Project: project, Name: name, Lang: lang, ReqId: reqID}
+	upgrader := websocket.Upgrader{
+		ReadBufferSize:  1024,
+		WriteBufferSize: 1024,
+	}
+	// Do not echo request headers into the response. Gorilla rejects
+	// application-specific Sec-WebSocket-Extensions headers.
+	conn, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		return nil, nil, fmt.Errorf(&quot;error upgrading connection: %s&quot;, err)
+	}
+	go func() {
+		defer conn.Close()
+		for {
+			_, msg, err := conn.ReadMessage()
+			if err != nil {
+				return
+			}
+			if err := nc.Publish(
+				fmt.Sprintf(&quot;%s.%s.exec.%s.%s&quot;, project, name, lang, reqID),
+				msg,
+			); err != nil {
+				return
+			}
+		}
+	}()
+	return conn, &amp;req, nil
+}</pre>
+  </div>
+  <div style="min-width: 0; display: flex; flex-direction: column; gap: 0.4rem;">
+    <div style="font-size: clamp(0.68rem, 1.05vw, 0.78rem); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75;">result.go — Reply · Subscribe</div>
+    <pre style="margin: 0; padding: 0.5rem 0.55rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.58rem, 0.95vw, 0.72rem); line-height: 1.38; text-align: left; white-space: pre; overflow: auto; max-height: min(72vh, 620px); background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">package broker
+
+import (
+	&quot;fmt&quot;
+	&quot;sync&quot;
+	&quot;time&quot;
+
+	&quot;github.com/ashupednekar/litefunctions/ingestor/pkg&quot;
+	&quot;github.com/nats-io/nats.go&quot;
+)
+
+func Reply(nc *nats.Conn, req *Req) ([]byte, error) {
+	subscriber, err := nc.SubscribeSync(
+		fmt.Sprintf(&quot;%s.%s.res.%s.%s&quot;, req.Project, req.Name, req.Lang, req.ReqId),
+	)
+	if err != nil {
+		return nil, fmt.Errorf(&quot;error starting subscriber: %s&quot;, err)
+	}
+	timeout, err := time.ParseDuration(pkg.Settings.ReplyTimeout)
+	if err != nil {
+		return nil, fmt.Errorf(&quot;reply timeout improperly configured: %s&quot;, err)
+	}
+	msg, err := subscriber.NextMsg(timeout)
+	if err != nil {
+		return nil, fmt.Errorf(&quot;error returning response: %s&quot;, err)
+	}
+	return msg.Data, nil
+}
+
+func Subscribe(nc *nats.Conn, req *Req) (&lt;-chan []byte, func(), error) {
+	res := make(chan []byte, 32)
+	subject := fmt.Sprintf(&quot;%s.%s.res.%s.%s&quot;, req.Project, req.Name, req.Lang, req.ReqId)
+
+	subscriber, err := nc.Subscribe(subject, func(msg *nats.Msg) {
+		payload := append([]byte(nil), msg.Data...)
+		select {
+		case res &lt;- payload:
+		default:
+			// Drop when downstream is slow to avoid blocking NATS callback goroutines.
+		}
+	})
+	if err != nil {
+		return nil, nil, fmt.Errorf(&quot;error starting subscriber: %s&quot;, err)
+	}
+
+	var once sync.Once
+	cleanup := func() {
+		once.Do(func() {
+			_ = subscriber.Unsubscribe()
+			close(res)
+		})
+	}
+
+	return res, cleanup, nil
+}</pre>
+  </div>
+  </div>
+</div>

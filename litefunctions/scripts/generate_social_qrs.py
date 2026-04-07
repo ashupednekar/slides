@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Generate social QR PNGs for thank-you slide (repo root thank-you.html). Requires: pip install qrcode[pil]"""
+"""Generate QR PNGs for slides (thank-you, code-ingestor, code-runtimes, code-operator). Requires: pip install qrcode[pil]"""
 
 from pathlib import Path
 
 import qrcode
 from qrcode.constants import ERROR_CORRECT_M
 
-# Same URLs as <a href> in ../../thank-you.html (must stay in sync)
+# Same URLs as <a href> in ../../thank-you.html and litefunctions/code-*.html (must stay in sync)
 URLS: dict[str, str] = {
+    "broker_request_qr.png": "https://github.com/ashupednekar/litefunctions/blob/main/ingestor/pkg/broker/request.go",
+    "runtimes_qr.png": "https://github.com/ashupednekar/litefunctions/blob/main/runtimes/",
+    "operator_qr.png": "https://github.com/ashupednekar/litefunctions/blob/main/operator/",
     "linkedinqr.png": "https://www.linkedin.com/in/ashupednekar",
     "xqr.png": "https://x.com/ashupednekar49",
     "threadsqr.png": "https://www.threads.com/@ashupednekar",
