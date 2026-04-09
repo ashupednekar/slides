@@ -58,21 +58,25 @@ Why  - building from first principles — cuz we can 😉
 
 .html where-does-go-come-in.html
 
-## Let's dig in, ingestor
-
-.html dataflow.html
-
-## $ litefunctions/ingestor
+## litefunctions/ingestor
 
 .html code-ingestor.html
 
-## The runtimes
+## Sync handler
 
-.html runtimes.html
+.html dataflow-sync.html
 
-## $ litefunctions/runtimes
+## Async consumer
 
-.html code-runtimes.html
+.html dataflow-async.html
+
+## Static runtimes
+
+.html runtimes-static.html
+
+## Dynamic runtimes
+
+.html runtimes-dynamic.html
 
 ## LiteFunctions Operator
 

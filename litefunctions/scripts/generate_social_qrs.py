@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate QR PNGs for slides (thank-you, code-ingestor, code-runtimes, code-operator). Requires: pip install qrcode[pil]"""
+"""Generate QR PNGs for slides (thank-you, code-ingestor, code-operator, runtimes, …). Requires: pip install qrcode[pil]"""
 
 from pathlib import Path
 
