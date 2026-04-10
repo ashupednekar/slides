@@ -7,6 +7,7 @@ https://slides.ashudev.in/
 | Directory       | Topic                          |
 |----------------|--------------------------------|
 | `litefunctions/` | LiteFunctions / serverless talk |
+| `litefunctions-go/` | LiteFunctions / Go architecture talk |
 | `quickgrpc/`     | gRPC quick intro                 |
 
 Each deck has a `.slide` file; supporting `.html` assets live alongside it.
