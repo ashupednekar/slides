@@ -1,6 +1,8 @@
 # Building self hosted lambda 
 
-Building a lambda like FAAS platform in Go from first principles
+Building a functions as a service platform in Go from first principles
+
+.css theme-overrides.css
 
 ## Hello 👋🏻
 

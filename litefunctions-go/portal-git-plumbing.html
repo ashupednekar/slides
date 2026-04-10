@@ -8,7 +8,7 @@
       Git plumbing in-memory: fast, isolated, and no host FS coupling.
     </div>
 
-    <pre style="margin: 0; padding: 0.62rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: transparent; color: #e8e8ea; border: 0; border-top: 1px solid #2f3339; border-bottom: 1px solid #2f3339; box-sizing: border-box;">// internal/project/repo/spec.go
+    <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// internal/project/repo/spec.go
 type GitRepo struct {
   Storage *memory.Storage
   Fs      billy.Filesystem
@@ -25,7 +25,7 @@ func NewGitRepo(project string, branch *string) (*GitRepo, error) {
   // SetupAuth -> Clone -> cache per project
 }</pre>
 
-    <pre style="margin: 0; padding: 0.5rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.4; text-align: left; white-space: pre-wrap; overflow-x: auto; background: transparent; color: #dbe2ea; border: 0; border-bottom: 1px solid #2f3339; box-sizing: border-box;">// pseudocode path
+    <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre-wrap; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// pseudocode path
 repo := NewGitRepo(project)
 repo.Fs.Create(path)       // write function file in memfs
 repo.Commit(path)          // git commit signature

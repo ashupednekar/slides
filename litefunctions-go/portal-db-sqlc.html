@@ -1,34 +1,46 @@
 <div style="position: relative; width: 100%; box-sizing: border-box;">
-  <a href="https://github.com/ashupednekar/litefunctions/blob/main/portal/internal/project/adaptors/query.sql" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit; text-align: center;">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fgithub.com%2Fashupednekar%2Flitefunctions%2Fblob%2Fmain%2Fportal%2Finternal%2Fproject%2Fadaptors%2Fquery.sql" alt="QR: query.sql" style="width: min(92px, 16vw); max-width: 92px; height: auto; display: block; border-radius: 6px;" />
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/portal/internal/project/adaptors/query.sql"
+    target="_blank" rel="noopener noreferrer"
+    style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit; text-align: center;">
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fgithub.com%2Fashupednekar%2Flitefunctions%2Fblob%2Fmain%2Fportal%2Finternal%2Fproject%2Fadaptors%2Fquery.sql"
+      alt="QR: query.sql"
+      style="width: min(92px, 16vw); max-width: 92px; height: auto; display: block; border-radius: 6px;" />
     <div style="font-size: 0.6em; margin-top: 0.18rem; opacity: 0.8;">query.sql</div>
   </a>
 
-  <div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;">
+  <div
+    style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;">
     <div style="font-size: clamp(0.9rem, 1.28vw, 1.02rem); line-height: 1.42; opacity: 0.93;">
       Schema-first + <strong>sqlc</strong>: typed queries, safer refactors, better AI-assisted edits.
     </div>
 
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0.8rem;align-items:start;border-top:1px solid #2f3339;padding-top:0.28rem;">
+    <div
+      style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0.8rem;align-items:stretch;border-top:1px solid #2f3339;padding-top:0.28rem;">
       <div style="min-width:0; display:flex; flex-direction:column;">
-        <div style="font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #93c5fd; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">DDL</div>
-        <pre style="margin: 0; padding: 0.24rem 0 0.3rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: transparent; color: #e8e8ea; border: 0; box-sizing: border-box;">-- migrations/00001_init_schema.sql
+        <div
+          style="font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #93c5fd; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">
+          DDL</div>
+        <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">-- migrations/00001_init_schema.sql
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE projects (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  name TEXT NOT NULL UNIQUE,
-  description TEXT,
-  created_by BYTEA NOT NULL
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+name TEXT NOT NULL UNIQUE,
+description TEXT,
+created_by BYTEA NOT NULL
 );
--- +goose StatementEnd
-</pre>
-        <pre style="margin: auto 0 0 0; padding: 0.26rem 0.38rem; width: fit-content; max-width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.36; text-align: center; white-space: pre-wrap; overflow-x: auto; background: #0b3b1f; color: #dcfce7; border: 1px solid #166534; border-radius: 6px; box-sizing: border-box;">goose up</pre>
+-- +goose StatementEnd</pre>
+        <pre
+          style="margin: auto 0 0 0; padding: 0.26rem 0.44rem; width: fit-content; max-width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.36; text-align: center; white-space: pre-wrap; overflow-x: auto; background: #f8fafc; color: #0f172a; border: 1px dashed #64748b; border-radius: 999px; transform: rotate(-2deg); box-sizing: border-box;">
+          goose up</pre>
       </div>
 
       <div style="min-width:0; display:flex; flex-direction:column;">
-        <div style="font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #fcd34d; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">DML</div>
-        <pre style="margin: 0; padding: 0.24rem 0 0.3rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: transparent; color: #e8e8ea; border: 0; box-sizing: border-box;">-- internal/project/adaptors/query.sql
+        <div
+          style="font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #fcd34d; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">
+          DML</div>
+        <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">-- internal/project/adaptors/query.sql
 -- name: CreateProject :one
 INSERT INTO projects (name, description, created_by)
 VALUES ($1, $2, $3)
@@ -36,26 +48,35 @@ RETURNING *;
 
 -- name: GetProjectByID :one
 SELECT * FROM projects WHERE id = $1;</pre>
-        <pre style="margin: auto 0 0 0; padding: 0.26rem 0.38rem; width: fit-content; max-width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.36; text-align: center; white-space: pre-wrap; overflow-x: auto; background: #312107; color: #fef3c7; border: 1px solid #92400e; border-radius: 6px; box-sizing: border-box;">sqlc generate</pre>
+        <pre
+          style="margin: auto 0 0 0; padding: 0.26rem 0.44rem; width: fit-content; max-width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.36; text-align: center; white-space: pre-wrap; overflow-x: auto; background: #f8fafc; color: #0f172a; border: 1px dashed #64748b; border-radius: 999px; transform: rotate(2deg); box-sizing: border-box;">
+          sqlc generate</pre>
       </div>
     </div>
 
-    <div style="padding-top: 0.22rem; border-top: 1px dashed #2f3339; font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #f9a8d4; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">Typed code</div>
-    <pre style="margin: 0; padding: 0.22rem 0 0.5rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.38; text-align: left; white-space: pre-wrap; overflow-x: auto; background: transparent; color: #dbe2ea; border: 0; border-bottom: 1px solid #2f3339; box-sizing: border-box;">// generated shape (query.sql.go)
+    <div
+      style="padding-top: 0.22rem; border-top: 1px dashed #2f3339; font-size: clamp(0.72rem, 1.02vw, 0.82rem); line-height: 1.35; color: #f9a8d4; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;">
+      Typed code</div>
+    <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre-wrap; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// generated shape (query.sql.go)
 type CreateProjectParams struct {
-  Name string
-  Description pgtype.Text
-  CreatedBy []byte
+Name string
+Description pgtype.Text
+CreatedBy []byte
 }
 func (q *Queries) CreateProject(ctx context.Context, arg CreateProjectParams) (Project, error)</pre>
 
     <div style="font-size: clamp(0.74rem, 1.05vw, 0.86rem); line-height: 1.4; color: #334155;">
-      Best part in AI age: model can draft SQL, <strong>sqlc</strong> enforces typed boundaries before runtime.
+      AI can draft SQL, but <strong>sqlc</strong> keeps boundaries typed before runtime. Same philosophy I write about
+      at <a href="https://ashupednekar.github.io" target="_blank" rel="noopener noreferrer">ashupednekar.github.io</a>.
     </div>
   </div>
 
-  <div style="position: absolute; right: 0.5rem; bottom: 0.4rem; display: flex; align-items: center; gap: 0.35rem; opacity: 0.95;" aria-hidden="true">
-    <img src="images/sqlc.png" alt="sqlc" style="height: 34px; width: auto; object-fit: contain; transform: rotate(-8deg);" />
-    <img src="images/crunchydata.png" alt="Postgres" style="height: 36px; width: auto; object-fit: contain; transform: rotate(7deg);" />
+  <div
+    style="position: absolute; right: 0.5rem; bottom: 0.4rem; display: flex; align-items: center; gap: 0.35rem; opacity: 0.95;"
+    aria-hidden="true">
+    <img src="images/sqlc.png" alt="sqlc"
+      style="height: 34px; width: auto; object-fit: contain; transform: rotate(-8deg);" />
+    <img src="images/crunchydata.png" alt="Postgres"
+      style="height: 36px; width: auto; object-fit: contain; transform: rotate(7deg);" />
   </div>
 </div>
