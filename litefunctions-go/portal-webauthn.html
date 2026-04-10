@@ -1,0 +1,38 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/portal/internal/auth/spec.go" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit; text-align: center;">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fgithub.com%2Fashupednekar%2Flitefunctions%2Fblob%2Fmain%2Fportal%2Finternal%2Fauth%2Fspec.go" alt="QR: auth spec" style="width: min(92px, 16vw); max-width: 92px; height: auto; display: block; border-radius: 6px;" />
+    <div style="font-size: 0.6em; margin-top: 0.18rem; opacity: 0.8;">auth/spec.go</div>
+  </a>
+  <div style="position: relative; width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.55rem;">
+    <div style="font-size: clamp(1rem, 1.42vw, 1.15rem); line-height: 1.4; opacity: 0.95;">
+      Passkeys are part of the contract, not a feature bolt-on.
+    </div>
+    <div style="font-size: clamp(0.8rem, 1.08vw, 0.9rem); line-height: 1.35; opacity: 0.88;">
+      Challenge state, credential writes, and user session are explicit interfaces.
+    </div>
+
+    <div style="position:absolute; right:5.8rem; top:3.2rem; width:min(44%, 300px); border:1px solid #2f3339; border-radius:8px; padding:0.35rem; background:rgba(15,18,20,0.55); backdrop-filter: blur(1px);">
+      <img src="https://www.webauthn.me/img/1-Web-Authentication-Entities.svg" alt="WebAuthn entities diagram" style="width:100%; height:auto; max-height:min(180px, 26vh); object-fit:contain; opacity:0.9; display:block;" />
+    </div>
+
+    <pre style="margin: 0; padding: 0.42rem 0; padding-right:min(46%, 310px); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.66rem, 0.95vw, 0.78rem); line-height: 1.44; text-align: left; white-space: pre; overflow-x: auto; background: transparent; color: #e8e8ea; border: 0; box-sizing: border-box;">// internal/auth/spec.go
+type PasskeyUser interface {
+  webauthn.User
+  AddCredential(*webauthn.Credential) error
+  UpdateCredential(*webauthn.Credential) error
+}
+
+type PasskeyStore interface {
+  GetOrCreateUser(userName string) (PasskeyUser, error)
+  SaveCredential(user PasskeyUser, cred *webauthn.Credential) error
+  GetSession(token string) (webauthn.SessionData, bool)
+  SaveSession(username, token string, data webauthn.SessionData) error
+  SessionStore
+}</pre>
+
+    <pre style="margin: 0; padding: 0.45rem 0; padding-right:min(46%, 310px); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.6rem, 0.9vw, 0.72rem); line-height: 1.4; text-align: left; white-space: pre-wrap; overflow-x: auto; background: transparent; color: #dbe2ea; border: 0; box-sizing: border-box;">// pseudocode flow
+begin registration -> store challenge session
+finish registration -> verify attestation -> persist credential
+login -> verify assertion -> create user session cookie</pre>
+  </div>
+</div>

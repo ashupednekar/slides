@@ -1,0 +1,109 @@
+# From CRD to Invocation
+
+How we built a Lambda-shaped platform in Go on Kubernetes
+
+## Hello 👋🏻
+
+.html hello.html
+
+## The problem
+
+I wanted Lambda-like developer experience, but on my own cluster, with my own control plane.
+
+.html selfhosted.html
+
+## What does Lambda-like really mean?
+
+.html lambda-diagram.html
+
+## The real question
+
+What actually has to happen when someone invokes a function?
+
+.html how-does-it-work.html
+
+## Why Go for this?
+
+.html where-does-go-come-in.html
+
+## Components we had to build
+
+.html heres-ours.html
+
+## Portal: control plane
+
+.html portal-component.html
+
+## WebAuthn contracts
+
+.html portal-webauthn.html
+
+## DB schema + sqlc
+
+.html portal-db-sqlc.html
+
+## Vendor interfaces (GitHub/Gitea)
+
+.html portal-interfaces.html
+
+## Git plumbing (billy/memfs)
+
+.html portal-git-plumbing.html
+
+## Ingestor: decouple accept from execution
+
+.html code-ingestor.html
+
+## Sync invocation flow
+
+.html dataflow-sync.html
+
+## Demo
+
+.html demo-writeapi.html
+
+## Async invocation flow
+
+.html dataflow-async.html
+
+## Demo
+
+.html demo-websockets.html
+
+## Static runtimes
+
+.html runtimes-static.html
+
+## Dynamic runtimes
+
+.html runtimes-dynamic.html
+
+## The reconcile loop
+
+Recover cleanly from partial failures without duplicating state.
+
+.html code-operator.html
+
+## The package
+
+.html infra.html
+
+## Operator: desired state -> running state
+
+.html kubernetes-operator.html
+
+## Invocation result
+
+.html demo-there.html
+
+## What's next
+
+.html what-next-unikernels.html
+
+## Contributions welcome
+
+.html lots-to-improve.html
+
+## Thank you
+
+.html ../thank-you.html

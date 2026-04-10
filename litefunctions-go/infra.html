@@ -1,0 +1,54 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; min-height: min(560px, 76vh); display: flex; flex-direction: column; justify-content: center; gap: clamp(0.65rem, 1.3vh, 0.9rem);">
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.95rem 1rem;width:100%;align-items:end;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">version control</span>
+        <img src="images/git.png" alt="Git" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">CI</span>
+        <img src="images/jenkins.png" alt="Jenkins" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">CD</span>
+        <img src="images/argo.png" alt="Argo CD" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">orchestration</span>
+        <img src="images/k8s.png" alt="Kubernetes" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">pubsub</span>
+        <img src="images/nats.png" alt="NATS" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">state</span>
+        <div style="display:flex;align-items:center;gap:0.45rem;">
+          <img src="images/crunchydata.png" alt="Postgres" style="height:44px;width:auto;max-width:100%;object-fit:contain;" />
+          <img src="images/redis.svg" alt="Redis" style="height:34px;width:auto;max-width:100%;object-fit:contain;" />
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">traffic</span>
+        <img src="images/istio.png" alt="Istio" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:0.45rem;text-align:center;min-width:0;">
+        <span style="font-size:clamp(0.82rem,1.28vw,0.94rem);line-height:1.25;opacity:0.9;">runtime</span>
+        <img src="images/helm.svg" alt="Helm" style="height:48px;width:auto;max-width:100%;object-fit:contain;" />
+      </div>
+    </div>
+
+    <div style="padding-top: 0.35rem; border-top: 1px solid #e2e8f0; font-size: clamp(0.78rem, 1.12vw, 0.92rem); line-height: 1.45; color: #334155; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.5rem; text-align: center;">
+      <span style="font-weight: 700; color: #0f172a;">Compute + traffic + state</span>
+      <span aria-hidden="true" style="color: #94a3b8;">→</span>
+      <span>packaged as one</span>
+    </div>
+
+    <pre style="margin: 0 auto; width: fit-content; max-width: 100%; padding: 0.45rem 0.65rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.9vw, 0.76rem); line-height: 1.35; text-align: center; white-space: pre-wrap; word-break: break-all; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">helm install litefunctions oci://registry-1.docker.io/ashupednekar535/litefunctions</pre>
+
+    <div style="display: flex; align-items: flex-start; justify-content: center; gap: 0.6rem; width: 100%; padding-top: 0.1rem;">
+      <img src="images/artifacthub-screenshot.png" alt="Artifact Hub listing" style="width: min(100%, 340px); height: auto; max-height: min(104px, 16vh); object-fit: cover; object-position: top left; opacity: 0.9;" />
+      <img src="images/qr_artifacthub.png" alt="Artifact Hub QR" style="width: 72px; height: auto; display: block;" />
+    </div>
+  </div>
+</div>

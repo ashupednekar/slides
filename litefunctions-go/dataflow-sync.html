@@ -1,0 +1,52 @@
+<div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding: 0 0.15rem 0; min-width: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+  <!-- slide title from .slide covers “Sync handlers”; no duplicate label -->
+  <div style="display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr); gap: clamp(0.65rem, 1.5vw, 1rem); align-items: center; min-width: 0;">
+    <div style="min-width: 0; display: flex; justify-content: center; align-items: center;" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="100%" style="display: block; width: 100%; max-width: 260px; height: auto; max-height: min(16vh, 140px); object-fit: contain;">
+        <defs>
+          <linearGradient id="syncApron2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#3d4a5c"/>
+            <stop offset="100%" style="stop-color:#2a3340"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="120" cy="186" rx="88" ry="12" fill="rgba(255,255,255,0.07)"/>
+        <ellipse cx="120" cy="138" rx="40" ry="44" fill="url(#syncApron2)" stroke="#4a5568" stroke-width="1.4"/>
+        <circle cx="120" cy="68" r="42" fill="#f5d5c5" stroke="#d4a894" stroke-width="1.4"/>
+        <path d="M76 62 Q68 32 120 24 Q172 32 164 62 Q158 44 120 42 Q82 44 76 62" fill="#4a3728"/>
+        <circle cx="104" cy="68" r="6" fill="#1a1a22"/>
+        <circle cx="136" cy="68" r="6" fill="#1a1a22"/>
+        <circle cx="106" cy="65" r="2.2" fill="#fff"/>
+        <circle cx="138" cy="65" r="2.2" fill="#fff"/>
+        <path d="M112 86 Q120 92 128 86" fill="none" stroke="#b07a68" stroke-width="2" stroke-linecap="round"/>
+        <path d="M156 112 Q188 102 206 84" fill="none" stroke="#f5d5c5" stroke-width="16" stroke-linecap="round"/>
+        <ellipse cx="212" cy="80" rx="44" ry="12" fill="#5c5c62" stroke="#787880" stroke-width="1.4" transform="rotate(-8 212 80)"/>
+        <ellipse cx="212" cy="76" rx="32" ry="8" fill="#e8e8ec" stroke="#b8b8c0" stroke-width="1.2"/>
+        <path d="M186 76 Q212 44 238 76" fill="rgba(200,210,230,0.4)" stroke="#a8b0c0" stroke-width="1.4"/>
+        <ellipse cx="212" cy="74" rx="26" ry="6" fill="none" stroke="#c0c8d8" stroke-width="1.2"/>
+        <rect x="188" y="52" width="36" height="14" rx="2" fill="#2d4a6e" stroke="#5a8cc8" stroke-width="0.8" opacity="0.95"/>
+        <text x="206" y="62" font-size="8" fill="#bde" text-anchor="middle" font-family="ui-monospace,monospace">200</text>
+      </svg>
+    </div>
+    <div style="min-width: 0; font-size: clamp(0.78rem, 1.2vw, 0.9rem); line-height: 1.42; opacity: 0.92;">
+      <p style="margin: 0;">Read <code style="font-size: 0.9em;">r.Body</code>, then write headers and the <strong>response body</strong> on <code style="font-size: 0.9em;">w</code> in one goroutine—no channels; the “plate” is what you <code style="font-size: 0.9em;">Encode</code> or <code style="font-size: 0.9em;">Write</code>.</p>
+    </div>
+  </div>
+  <div style="min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; overflow-x: auto; border-radius: 8px; border: 1px solid #333338;">
+  <pre style="margin: 0; min-width: 0; max-width: 100%; padding: clamp(0.55rem, 1.1vw, 0.75rem) clamp(0.6rem, 1.2vw, 0.85rem); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.68rem, 1.15vw, 0.92rem); line-height: 1.45; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; box-sizing: border-box;">package pkg
+
+import (
+	&quot;encoding/json&quot;
+	&quot;net/http&quot;
+)
+
+func Handle(w http.ResponseWriter, r *http.Request) {
+	var req map[string]any
+	_ = json.NewDecoder(r.Body).Decode(&amp;req)
+	resp := map[string]any{&quot;ok&quot;: true, &quot;echo&quot;: req}
+
+	w.Header().Set(&quot;Content-Type&quot;, &quot;application/json&quot;)
+	w.WriteHeader(http.StatusOK)
+	_ = json.NewEncoder(w).Encode(resp) // response body
+}</pre>
+  </div>
+</div>
