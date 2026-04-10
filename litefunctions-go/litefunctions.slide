@@ -1,6 +1,6 @@
-# From CRD to Invocation
+# Building self hosted lambda 
 
-How we built a Lambda-shaped platform in Go on Kubernetes
+Building a lambda like FAAS platform in Go from first principles
 
 ## Hello 👋🏻
 
