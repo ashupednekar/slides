@@ -5,7 +5,10 @@
   </a>
   <div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;">
     <div style="font-size: clamp(0.88rem, 1.25vw, 1rem); line-height: 1.42; opacity: 0.92;">
-      Dedicated abstraction layer: <strong>same portal flow</strong>, different VCS providers.
+      Apart from standard git plumbing, we need to interface with the vendor directly for certain stuff like createRepo, addWebhook, etc
+    </div>
+    <div style="font-size: clamp(0.88rem, 1.25vw, 1rem); line-height: 1.42; opacity: 0.92;">
+      standard issue strategy pattern to abstract the integration from the callers
     </div>
 
     <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// internal/project/vendors/spec.go
