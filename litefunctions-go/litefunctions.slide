@@ -43,13 +43,13 @@ What actually has to happen when someone invokes a function?
 
 .html portal-db-sqlc.html
 
-## Vendor interfaces (GitHub/Gitea)
-
-.html portal-interfaces.html
-
 ## Git plumbing (billy/memfs)
 
 .html portal-git-plumbing.html
+
+## Vendor interfaces (GitHub/Gitea)
+
+.html portal-interfaces.html
 
 ## Ingestor: decouple accept from execution
 
