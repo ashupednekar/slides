@@ -111,9 +111,6 @@ ENTRYPOINT [&quot;/consumer&quot;]</pre>
         <p style="margin: 0; font-size: clamp(0.84rem, 1.3vw, 0.95rem); line-height: 1.5; color: #334155;">
           Ship <strong>small static binaries</strong> in <strong>distroless</strong> or <strong><code style="font-size:0.9em; background:#f1f5f9; padding:0.1em 0.35em; border-radius:0.25rem;">scratch</code></strong>—images stay tiny (often tens of MB, few layers). Each function gets its own <strong>dedicated consumer pod</strong> that starts fast.
         </p>
-        <p style="margin: 0; font-size: clamp(0.72rem, 1.05vw, 0.84rem); line-height: 1.42; color: #334155;">
-          <strong>Go</strong> wants a single static Linux binary by default—drop-in for <code style="font-size:0.88em; background:#f1f5f9; padding:0.08em 0.3em; border-radius:0.25rem;">scratch</code>. <strong>Rust</strong> can do the same (<code style="font-size:0.88em; background:#f1f5f9; padding:0.08em 0.3em; border-radius:0.25rem;">--target …-musl</code> / static link), or emit a <strong><code style="font-size:0.88em; background:#f1f5f9; padding:0.08em 0.3em; border-radius:0.25rem;">cdylib</code></strong> (<code style="font-size:0.88em; background:#f1f5f9; padding:0.08em 0.3em; border-radius:0.25rem;">.so</code>) for plugins—then you’re in dynamic-linking / loader land. For these pods we stick to a <strong>static <code style="font-size:0.88em; background:#f1f5f9; padding:0.08em 0.3em; border-radius:0.25rem;">bin</code></strong> in both languages so the deploy story matches Go’s “one artifact.”
-        </p>
         <p style="margin: 0; font-size: clamp(0.84rem, 1.3vw, 0.95rem); line-height: 1.5; color: #334155;">
           Scale each function <strong>up or down independently</strong> without dragging a shared interpreter along.
         </p>
