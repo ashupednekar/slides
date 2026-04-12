@@ -59,6 +59,11 @@ What actually has to happen when someone invokes a function?
 
 .html dataflow-sync.html
 
+## There u go
+
+.html demo-there.html
+
+
 ## Demo
 
 .html demo-writeapi.html
@@ -79,23 +84,19 @@ What actually has to happen when someone invokes a function?
 
 .html runtimes-dynamic.html
 
+## Operator: desired state -> running state
+
+.html kubernetes-operator.html
+
 ## The reconcile loop
 
 Recover cleanly from partial failures without duplicating state.
 
 .html code-operator.html
 
-## The package
+## Packaging it all
 
 .html infra.html
-
-## Operator: desired state -> running state
-
-.html kubernetes-operator.html
-
-## Invocation result
-
-.html demo-there.html
 
 ## What's next
 
