@@ -1,0 +1,43 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/portal/internal/project/repo/spec.go" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit; text-align: center;">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fgithub.com%2Fashupednekar%2Flitefunctions%2Fblob%2Fmain%2Fportal%2Finternal%2Fproject%2Frepo%2Fspec.go" alt="QR: repo spec" style="width: min(92px, 16vw); max-width: 92px; height: auto; display: block; border-radius: 6px;" />
+    <div style="font-size: 0.6em; margin-top: 0.18rem; opacity: 0.8;">repo/spec.go</div>
+  </a>
+  <div style="width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;">
+    <div style="font-size: clamp(0.88rem, 1.25vw, 1rem); line-height: 1.42; opacity: 0.92;">
+      Git plumbing in-memory: fast, isolated, and no host FS coupling.
+    </div>
+
+    <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// internal/project/repo/spec.go
+type GitRepo struct {
+  Storage *memory.Storage
+  Fs      billy.Filesystem
+  Repo    *git.Repository
+}
+
+func NewGitRepo(project string, branch *string) (*GitRepo, error) {
+  fs := memfs.New()               // in-memory billy FS
+  r := GitRepo{
+    Fs:      fs,                  // no disk dependency
+    Storage: memory.NewStorage(), // in-memory git object db
+    Options: &git.CloneOptions{ URL: ... },
+  }
+  // SetupAuth -> Clone -> cache per project
+}</pre>
+
+    <pre style="margin: 0; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre-wrap; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// pseudocode path
+repo := NewGitRepo(project)
+repo.Fs.Create(path)       // write function file in memfs
+repo.Commit(path)          // git commit signature
+repo.Push()                // vendor remote
+</pre>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.55rem; font-size: clamp(0.72rem, 0.98vw, 0.82rem); line-height: 1.35; padding-top: 0.15rem;">
+      <span style="font-weight: 700; color: #22c55e;">wins</span>
+      <span style="color: #86efac;">stateless, no file IO</span>
+      <span style="opacity: 0.45;">|</span>
+      <span style="font-weight: 700; color: #ef4444;">risks</span>
+      <span style="color: #fca5a5;">process local, redundancy / drift</span>
+    </div>
+  </div>
+</div>

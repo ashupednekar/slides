@@ -40,6 +40,28 @@ docker run --rm -p 3999:3999 slides
 
 Published image: `ashupednekar535/slides` (see `Dockerfile`).
 
+## Static export
+
+Render every top-level `.slide` deck into a self-contained static directory:
+
+```bash
+(cd render && go run ./cmd)
+```
+
+This writes `dist/<deck>/index.html` for each deck, copies each deck's local
+assets, and copies the `present-assets/static/` runtime into each output
+directory. To render only selected decks:
+
+```bash
+(cd render && go run ./cmd litefunctions quickgrpc)
+```
+
+Deploy the rendered output to Cloudflare Pages:
+
+```bash
+./deploy.sh
+```
+
 ## CD
 
 On push to `main`, GitHub Actions builds the image, pushes to Docker Hub, then SSHs to the deploy host and runs `docker pull` + `docker restart slides`.

@@ -1,0 +1,43 @@
+<div style="position: relative; width: 100%; box-sizing: border-box;">
+  <a href="https://github.com/ashupednekar/litefunctions/blob/main/portal/internal/auth/spec.go" target="_blank" rel="noopener noreferrer" style="position: absolute; top: 0; right: 0; z-index: 2; text-decoration: none; color: inherit; text-align: center;">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fgithub.com%2Fashupednekar%2Flitefunctions%2Fblob%2Fmain%2Fportal%2Finternal%2Fauth%2Fspec.go" alt="QR: auth spec" style="width: min(92px, 16vw); max-width: 92px; height: auto; display: block; border-radius: 6px;" />
+    <div style="font-size: 0.6em; margin-top: 0.18rem; opacity: 0.8;">auth/spec.go</div>
+  </a>
+  <div style="position: relative; width: 100%; max-width: min(58rem, 100%); margin: 0 auto; box-sizing: border-box; padding-right: 5.5rem; min-height: min(520px, 74vh); display: flex; flex-direction: column; justify-content: center; gap: 0.55rem;">
+    <div style="font-size: clamp(1rem, 1.42vw, 1.15rem); line-height: 1.4; opacity: 0.95;">
+      Webauthn, where security and convinience don't have to be at odds
+    </div>
+    <div style="font-size: clamp(0.8rem, 1.08vw, 0.9rem); line-height: 1.35; opacity: 0.88;">
+      Challenge state, credential writes, and user session are explicit interfaces.
+    </div>
+
+    <div aria-hidden="true" style="display:flex; align-items:flex-start; justify-content:center; width:100%; margin:0.1rem 0 0.35rem 0;">
+      <img src="images/webauthn.png" alt="" style="width:min(100%, 720px); max-height:min(250px, 36vh); height:auto; display:block; object-fit:contain; clip-path: inset(0 0 18% 0);" />
+    </div>
+
+    <div style="display:grid; grid-template-columns:minmax(0, 0.92fr) minmax(0, 1fr) minmax(0, 1.08fr); gap:0.55rem; align-items:start;">
+      <div style="min-width:0; font-size: clamp(0.64rem, 0.9vw, 0.74rem); line-height: 1.42; color: #334155; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 0.56rem 0.62rem; background: #f8fafc;">
+        <div style="font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #64748b; margin-bottom: 0.22rem;">Pseudocode</div>
+        <div>begin registration -> store challenge session</div>
+        <div>finish registration -> verify attestation -> persist credential</div>
+        <div>login -> verify assertion -> create user session cookie</div>
+      </div>
+
+      <pre style="margin: 0; width:100%; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// internal/auth/spec.go
+type PasskeyUser interface {
+  webauthn.User
+  AddCredential(*webauthn.Credential) error
+  UpdateCredential(*webauthn.Credential) error
+}</pre>
+
+      <pre style="margin: 0; width:100%; padding: 0.7rem 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(0.62rem, 0.92vw, 0.74rem); line-height: 1.42; text-align: left; white-space: pre; overflow-x: auto; background: #1a1a1c; color: #e8e8ea; border: 1px solid #333338; border-radius: 6px; box-sizing: border-box;">// internal/auth/spec.go
+type PasskeyStore interface {
+  GetOrCreateUser(userName string) (PasskeyUser, error)
+  SaveCredential(user PasskeyUser, cred *webauthn.Credential) error
+  GetSession(token string) (webauthn.SessionData, bool)
+  SaveSession(username, token string, data webauthn.SessionData) error
+  SessionStore
+}</pre>
+    </div>
+  </div>
+</div>

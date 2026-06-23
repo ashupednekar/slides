@@ -1,0 +1,32 @@
+article pre,
+article pre[style] {
+  margin: 0 !important;
+  padding: 0.7rem 0.78rem !important;
+  background: #1a1a1c !important;
+  color: #e8e8ea !important;
+  border: 1px solid #333338 !important;
+  border-radius: 6px !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+  text-shadow: none !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: clamp(0.62rem, 0.92vw, 0.74rem) !important;
+  line-height: 1.42 !important;
+}
+
+article pre code,
+article pre span,
+article pre * {
+  color: inherit !important;
+  opacity: 1 !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+article pre[style*="background: transparent"],
+article pre[style*="background:transparent"] {
+  background: #1a1a1c !important;
+}

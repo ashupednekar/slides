@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Empty{}
+
+message Employee {
+  uint32 id = 1;
+  string name = 2;
+  uint32 dept_id = 3;
+  string designation = 4;
+}
+
+message EmployeeInp {
+  string name = 1;
+  uint32 dept_id = 2;
+  string designation = 3;
+}
+
+message EmployeeID {
+  uint32 id = 1;
+}
+
