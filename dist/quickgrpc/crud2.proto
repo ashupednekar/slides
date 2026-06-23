@@ -1,6 +1,0 @@
-service EmployeeService {
-  rpc Create(EmployeeInp) returns (Employee);
-  rpc List(Empty) returns (Employees);
-  rpc Retrieve(EmployeeID) returns (Employee);
-  rpc Delete(EmployeeID) returns (Empty);
-}
