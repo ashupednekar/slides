@@ -1,9 +1,8 @@
-package main
+package cmd
 
 import (
 	"fmt"
 	"io"
-	"os"
 
 	renderer "github.com/ashupednekar/slides/render/internal"
 	"github.com/spf13/cobra"
@@ -21,7 +20,7 @@ type options struct {
 	largeAssetThreshold int64
 }
 
-func newRootCommand(out, errOut io.Writer) *cobra.Command {
+func NewRootCommand(out, errOut io.Writer) *cobra.Command {
 	opts := options{
 		baseRoot:            "present-assets",
 		outRoot:             "dist",
@@ -77,10 +76,4 @@ func newRootCommand(out, errOut io.Writer) *cobra.Command {
 	flags.Int64Var(&opts.largeAssetThreshold, "large-asset-threshold-mb", opts.largeAssetThreshold, "offload static assets larger than this many MiB")
 
 	return cmd
-}
-
-func execute() {
-	if err := newRootCommand(os.Stdout, os.Stderr).Execute(); err != nil {
-		os.Exit(1)
-	}
 }
