@@ -50,5 +50,8 @@ func renderDeck(cfg Config, tmpl *template.Template, d deck) (RenderedDeck, erro
 			return RenderedDeck{}, err
 		}
 	}
+	if err := offloadLargeAssets(cfg, outDir); err != nil {
+		return RenderedDeck{}, err
+	}
 	return RenderedDeck{Name: d.name, Title: firstTitle, OutDir: outDir}, nil
 }

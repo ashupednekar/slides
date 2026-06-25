@@ -1,19 +1,27 @@
 package render
 
 type Options struct {
-	RepoRoot string
-	BaseRoot string
-	OutRoot  string
-	Clean    bool
-	Notes    bool
+	RepoRoot            string
+	BaseRoot            string
+	OutRoot             string
+	Clean               bool
+	Notes               bool
+	R2Bucket            string
+	R2PublicBaseURL     string
+	WranglerBin         string
+	LargeAssetThreshold int64
 }
 
 type Config struct {
-	RepoRoot string
-	BaseRoot string
-	OutRoot  string
-	Clean    bool
-	Notes    bool
+	RepoRoot            string
+	BaseRoot            string
+	OutRoot             string
+	Clean               bool
+	Notes               bool
+	R2Bucket            string
+	R2PublicBaseURL     string
+	WranglerBin         string
+	LargeAssetThreshold int64
 }
 
 type RenderedDeck struct {

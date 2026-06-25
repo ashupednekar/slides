@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
+
+const defaultLargeAssetThreshold = 25 * 1024 * 1024
 
 func NewConfig(opts Options) (Config, error) {
 	repoRoot := opts.RepoRoot
@@ -28,12 +31,33 @@ func NewConfig(opts Options) (Config, error) {
 		return Config{}, fmt.Errorf("repo root %q does not contain present-assets", repoRoot)
 	}
 
+	if opts.R2Bucket == "" {
+		opts.R2Bucket = "slides"
+	}
+	if opts.R2PublicBaseURL == "" {
+		opts.R2PublicBaseURL = os.Getenv("SLIDES_R2_PUBLIC_BASE_URL")
+	}
+	opts.R2PublicBaseURL = strings.TrimRight(opts.R2PublicBaseURL, "/")
+	if opts.WranglerBin == "" {
+		opts.WranglerBin = os.Getenv("WRANGLER_BIN")
+	}
+	if opts.WranglerBin == "" {
+		opts.WranglerBin = "wrangler"
+	}
+	if opts.LargeAssetThreshold <= 0 {
+		opts.LargeAssetThreshold = defaultLargeAssetThreshold
+	}
+
 	return Config{
-		RepoRoot: repoRoot,
-		BaseRoot: resolvePath(repoRoot, opts.BaseRoot),
-		OutRoot:  resolvePath(repoRoot, opts.OutRoot),
-		Clean:    opts.Clean,
-		Notes:    opts.Notes,
+		RepoRoot:            repoRoot,
+		BaseRoot:            resolvePath(repoRoot, opts.BaseRoot),
+		OutRoot:             resolvePath(repoRoot, opts.OutRoot),
+		Clean:               opts.Clean,
+		Notes:               opts.Notes,
+		R2Bucket:            opts.R2Bucket,
+		R2PublicBaseURL:     opts.R2PublicBaseURL,
+		WranglerBin:         opts.WranglerBin,
+		LargeAssetThreshold: opts.LargeAssetThreshold,
 	}, nil
 }
 

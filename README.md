@@ -50,7 +50,10 @@ Render every top-level `.slide` deck into a self-contained static directory:
 
 This writes `dist/<deck>/index.html` for each deck, copies each deck's local
 assets, and copies the `present-assets/static/` runtime into each output
-directory. To render only selected decks:
+directory. Static files larger than 25 MiB are uploaded to the `slides` R2
+bucket when Wrangler and `SLIDES_R2_PUBLIC_BASE_URL` are available; otherwise
+their references fall back to `placeholder.png` so the Pages deploy stays under
+the per-file size limit. To render only selected decks:
 
 ```bash
 (cd render && go run ./cmd litefunctions quickgrpc)
@@ -59,6 +62,7 @@ directory. To render only selected decks:
 Deploy the rendered output to Cloudflare Pages:
 
 ```bash
+export SLIDES_R2_PUBLIC_BASE_URL="https://your-public-r2-host"
 ./deploy.sh
 ```
 

@@ -10,18 +10,24 @@ import (
 )
 
 type options struct {
-	repoRoot string
-	baseRoot string
-	outRoot  string
-	clean    bool
-	notes    bool
+	repoRoot            string
+	baseRoot            string
+	outRoot             string
+	clean               bool
+	notes               bool
+	r2Bucket            string
+	r2PublicBaseURL     string
+	wranglerBin         string
+	largeAssetThreshold int64
 }
 
 func newRootCommand(out, errOut io.Writer) *cobra.Command {
 	opts := options{
-		baseRoot: "present-assets",
-		outRoot:  "dist",
-		clean:    true,
+		baseRoot:            "present-assets",
+		outRoot:             "dist",
+		clean:               true,
+		r2Bucket:            "slides",
+		largeAssetThreshold: 25,
 	}
 
 	cmd := &cobra.Command{
@@ -30,11 +36,15 @@ func newRootCommand(out, errOut io.Writer) *cobra.Command {
 		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			cfg, err := renderer.NewConfig(renderer.Options{
-				RepoRoot: opts.repoRoot,
-				BaseRoot: opts.baseRoot,
-				OutRoot:  opts.outRoot,
-				Clean:    opts.clean,
-				Notes:    opts.notes,
+				RepoRoot:            opts.repoRoot,
+				BaseRoot:            opts.baseRoot,
+				OutRoot:             opts.outRoot,
+				Clean:               opts.clean,
+				Notes:               opts.notes,
+				R2Bucket:            opts.r2Bucket,
+				R2PublicBaseURL:     opts.r2PublicBaseURL,
+				WranglerBin:         opts.wranglerBin,
+				LargeAssetThreshold: opts.largeAssetThreshold * 1024 * 1024,
 			})
 			if err != nil {
 				return err
@@ -61,6 +71,10 @@ func newRootCommand(out, errOut io.Writer) *cobra.Command {
 	flags.StringVar(&opts.outRoot, "out", opts.outRoot, "output directory, relative to repo unless absolute")
 	flags.BoolVar(&opts.clean, "clean", opts.clean, "remove the output directory before rendering")
 	flags.BoolVar(&opts.notes, "notes", opts.notes, "render presenter notes support")
+	flags.StringVar(&opts.r2Bucket, "r2-bucket", opts.r2Bucket, "R2 bucket for assets larger than the threshold")
+	flags.StringVar(&opts.r2PublicBaseURL, "r2-public-base-url", "", "public URL prefix for R2 objects; defaults to SLIDES_R2_PUBLIC_BASE_URL")
+	flags.StringVar(&opts.wranglerBin, "wrangler-bin", opts.wranglerBin, "Wrangler executable used for R2 object checks and uploads; defaults to WRANGLER_BIN or wrangler")
+	flags.Int64Var(&opts.largeAssetThreshold, "large-asset-threshold-mb", opts.largeAssetThreshold, "offload static assets larger than this many MiB")
 
 	return cmd
 }
