@@ -45,7 +45,7 @@ Published image: `ashupednekar535/slides` (see `Dockerfile`).
 Render every top-level `.slide` deck into a self-contained static directory:
 
 ```bash
-(cd render && go run ./cmd)
+(cd render && go run .)
 ```
 
 This writes `dist/<deck>/index.html` for each deck, copies each deck's local
@@ -56,7 +56,7 @@ their references fall back to `placeholder.png` so the Pages deploy stays under
 the per-file size limit. To render only selected decks:
 
 ```bash
-(cd render && go run ./cmd litefunctions quickgrpc)
+(cd render && go run . litefunctions quickgrpc)
 ```
 
 Deploy the rendered output to Cloudflare Pages:
